@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Jamaran Online Quran Academy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/site-enhancements.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        body {
+            background-color: #f7f9f6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .login-page-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 60px;
+        }
+        .login-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 440px;
+            padding: 40px 35px;
+            border-radius: 14px;
+            border-top: 5px solid #d4af37;
+            box-shadow: 0 12px 35px rgba(18, 107, 58, 0.12);
+            text-align: center;
+        }
+        .login-card .logo-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 5px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .login-card h2 {
+            font-family: Georgia, serif;
+            color: #126b3a;
+            font-size: 26px;
+            margin: 0 0 6px;
+        }
+        .login-card p.subtitle {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        .login-form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .login-form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .login-input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .login-input-wrap i.field-icon {
+            position: absolute;
+            left: 14px;
+            color: #126b3a;
+            font-size: 15px;
+        }
+        .login-input-wrap input {
+            width: 100%;
+            padding: 12px 42px 12px 40px;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .login-input-wrap input:focus {
+            border-color: #126b3a;
+            box-shadow: 0 0 0 3px rgba(18, 107, 58, 0.12);
+        }
+        .login-input-wrap .toggle-pw {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #777;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 4px;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 13px;
+            background: #126b3a;
+            color: #ffffff;
+            border: 2px solid #126b3a;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .login-btn:hover {
+            background: #0d4e2a;
+            border-color: #d4af37;
+        }
+        .login-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        .login-status-msg {
+            margin-top: 15px;
+            font-size: 13px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            display: none;
+        }
+        .login-status-msg.error {
+            display: block;
+            background: #fde8e8;
+            color: #b91c1c;
+            border: 1px solid #f8b4b4;
+        }
+        .login-status-msg.success {
+            display: block;
+            background: #def7ec;
+            color: #03543f;
+            border: 1px solid #bcf0da;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 22px;
+            color: #126b3a;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            color: #d4af37;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <div class="brand">
+                <a href="/" class="logo">
+                    <img src="images/logo (3).png" alt="Jamaran Online Quran Academy">
+                </a>
+                <div class="brand-name">
+                    <h3>Jamaran</h3>
+                    <span>Online Quran Academy</span>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li class="dropdown">
+                    <a href="/courses">Courses <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/courses/yassarnul_quran">Yassarnul Quran</a></li>
+                        <li><a href="/courses/quran_tajweed">Quran with Tajweed</a></li>
+                        <li><a href="/courses/duas_ziyarat">Duas &amp; Ziyaraat</a></li>
+                        <li><a href="/courses/tafseer">Tafseer of the Quran</a></li>
+                        <li><a href="/courses/nahjul_balagha">Nahjul Balagha</a></li>
+                        <li><a href="/courses/ahkam_namaz">Ahkam &amp; Namaz</a></li>
+                    </ul>
+                </li>
+                <li><a href="/teacher">Teachers</a></li>
+                <li><a href="/reviews"><i class="fa-solid fa-star" style="color: #d4af37; font-size:12px;"></i> Parent Reviews</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/register">Enroll Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- LOGIN MAIN -->
+    <main class="login-page-container">
+        <div class="login-card">
+            <img src="images/logo (3).png" alt="Jamaran Academy Logo" class="logo-img">
+            <h2>Admin Login</h2>
+            <p class="subtitle">Enter your credentials to access the administrative dashboard</p>
+
+            <form id="adminLoginForm">
+                <div class="login-form-group">
+                    <label for="loginUsername">Username</label>
+                    <div class="login-input-wrap">
+                        <i class="fa-solid fa-user field-icon"></i>
+                        <input type="text" id="loginUsername" name="username" placeholder="Username" required autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="login-form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="login-input-wrap">
+                        <i class="fa-solid fa-lock field-icon"></i>
+                        <input type="password" id="loginPassword" name="password" placeholder="Password" required autocomplete="current-password">
+                        <button type="button" class="toggle-pw" id="togglePasswordBtn" aria-label="Toggle password visibility">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="loginStatus" class="login-status-msg" role="status" aria-live="polite"></div>
+
+                <button type="submit" class="login-btn" id="loginSubmitBtn">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <span>Log In to Dashboard</span>
+                </button>
+            </form>
+
+            <a href="/" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i> Back to Homepage
+            </a>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" style="padding-top: 30px;">
+        <div class="footer-bottom">
+            <p>© 2026 Jamaran Online Quran Academy. Admin Portal.</p>
+        </div>
+    </footer>
+
+    <script>
+        "use strict";
+
+        const form = document.getElementById("adminLoginForm");
+        const usernameInput = document.getElementById("loginUsername");
+        const passwordInput = document.getElementById("loginPassword");
+        const toggleBtn = document.getElementById("togglePasswordBtn");
+        const statusBox = document.getElementById("loginStatus");
+        const submitBtn = document.getElementById("loginSubmitBtn");
+
+        const API_URL = window.location.origin.startsWith("http")
+            ? "/api/auth/login"
+            : "http://localhost:3000/api/auth/login";
+
+        toggleBtn.addEventListener("click", () => {
+            const isPassword = passwordInput.type === "password";
+            passwordInput.type = isPassword ? "text" : "password";
+            toggleBtn.innerHTML = isPassword
+                ? '<i class="fa-solid fa-eye-slash"></i>'
+                : '<i class="fa-solid fa-eye"></i>';
+        });
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
+
+            if (!username || !password) {
+                showStatus("Please enter your username and password.", "error");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.querySelector("span").textContent = "Authenticating...";
+            showStatus("", "");
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok || !data.success) {
+                    throw new Error(data.message || "Invalid username or password.");
+                }
+
+                sessionStorage.setItem("adminToken", data.token);
+                sessionStorage.setItem("adminInfo", JSON.stringify(data.admin || {}));
+
+                showStatus("Login successful! Redirecting to dashboard...", "success");
+
+                setTimeout(() => {
+                    window.location.href = "/admin_dashboard";
+                }, 800);
+
+            } catch (error) {
+                showStatus(error.message || "Unable to log in. Please try again.", "error");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.querySelector("span").textContent = "Log In to Dashboard";
+            }
+        });
+
+        function showStatus(msg, type) {
+            if (!msg) {
+                statusBox.className = "login-status-msg";
+                statusBox.textContent = "";
+                statusBox.style.display = "none";
+                return;
+            }
+            statusBox.className = `login-status-msg ${type}`;
+            statusBox.textContent = msg;
+            statusBox.style.display = "block";
+        }
+    </script>
+
+    <!-- Shared site behaviour: mobile nav, logo fallback -->
+    <script src="js/site.js"></script>
+</body>
+</html>

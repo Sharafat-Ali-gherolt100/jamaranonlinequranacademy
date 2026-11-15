@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Jamaran Online Quran Academy</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashboard.js" defer></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+
+<div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-logo">
+                <img src="images/logo (3).png" alt="Jamaran Online Quran Academy Logo">
+            </div>
+            <div>
+                <h2>Jamaran Academy</h2>
+                <p>Admin Control Panel</p>
+            </div>
+        </div>
+
+        <nav class="navigation">
+            <button class="nav-link active" data-section="overview">
+                <i class="fa-solid fa-chart-pie"></i> Overview
+            </button>
+            <button class="nav-link" data-section="students">
+                <i class="fa-solid fa-user-graduate"></i> Students
+            </button>
+            <button class="nav-link" data-section="registrations">
+                <i class="fa-solid fa-clipboard-list"></i> Registrations
+            </button>
+            <button class="nav-link" data-section="reviews">
+                <i class="fa-solid fa-star"></i> Parent Reviews
+            </button>
+            <button class="nav-link" data-section="teachers">
+                <i class="fa-solid fa-chalkboard-user"></i> Teachers
+            </button>
+            <button class="nav-link" data-section="courses">
+                <i class="fa-solid fa-book-quran"></i> Courses
+            </button>
+            <button class="nav-link" data-section="content">
+                <i class="fa-solid fa-pen-to-square"></i> Website Content
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="admin-mini">
+                <div class="avatar"><i class="fa-solid fa-user-shield"></i></div>
+                <div>
+                    <strong id="adminName">Administrator</strong>
+                    <small>Academy Admin</small>
+                </div>
+            </div>
+            <button class="logout-button" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="topbar-brand">
+                    <img src="images/logo (3).png" alt="Jamaran Online Quran Academy" class="topbar-logo">
+                    <div>
+                        <h1 id="pageTitle">Dashboard Overview</h1>
+                        <p>Manage courses, registrations, students, and parent reviews.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px;">
+                <a href="/" class="secondary-btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                    <i class="fa-solid fa-globe"></i> View Website
+                </a>
+                <button class="refresh-btn" id="refreshBtn">
+                    <i class="fa-solid fa-rotate"></i> Refresh
+                </button>
+            </div>
+        </header>
+
+        <div id="notice" class="notice" role="status"></div>
+
+        <!-- 1. OVERVIEW -->
+        <section class="page-section active" id="overview">
+            <div class="welcome-card">
+                <div>
+                    <p class="eyebrow">ADMINISTRATION OVERVIEW</p>
+                    <h2>Assalamu Alaikum!</h2>
+                    <p>Welcome back to the Jamaran Online Quran Academy administration portal.</p>
+                </div>
+                <i class="fa-solid fa-mosque welcome-icon"></i>
+            </div>
+
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-icon green"><i class="fa-solid fa-user-graduate"></i></div>
+                    <p>Enrolled Students</p>
+                    <h3 id="totalStudents">—</h3>
+                    <small>Approved student records</small>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-icon blue"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <p>Active Teachers</p>
+                    <h3 id="totalTeachers">—</h3>
+                    <small>Currently teaching</small>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-icon gold"><i class="fa-solid fa-book-quran"></i></div>
+                    <p>Active Courses</p>
+                    <h3 id="totalCourses">—</h3>
+                    <small>Available curriculum</small>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-icon orange"><i class="fa-solid fa-clock"></i></div>
+                    <p>Pending Requests</p>
+                    <h3 id="pendingRegistrations">—</h3>
+                    <small>Awaiting review</small>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-icon purple"><i class="fa-solid fa-star"></i></div>
+                    <p>Pending Reviews</p>
+                    <h3 id="pendingReviewsCount">—</h3>
+                    <small>Parent feedback to review</small>
+                </article>
+            </div>
+
+            <div class="stats-grid secondary-stats">
+                <article class="stat-card compact">
+                    <p>Total Registrations</p>
+                    <h3 id="totalRegistrations">—</h3>
+                </article>
+                <article class="stat-card compact">
+                    <p>Approved Registrations</p>
+                    <h3 id="approvedRegistrations">—</h3>
+                </article>
+                <article class="stat-card compact">
+                    <p>Rejected Registrations</p>
+                    <h3 id="rejectedRegistrations">—</h3>
+                </article>
+            </div>
+
+            <div class="content-grid">
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Students by Country</h2>
+                            <p>Global student community distribution</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="countryChart"></canvas>
+                    </div>
+                    <div id="countryList" class="country-list"></div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h2>Recent Registration Requests</h2>
+                            <p>Latest prospective students</p>
+                        </div>
+                        <button class="text-button" data-go="registrations">View All →</button>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Country</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentTable">
+                                <tr><td colspan="3" class="empty">Loading recent registrations...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 2. STUDENTS -->
+        <section class="page-section" id="students">
+            <div class="section-heading">
+                <div>
+                    <h2>Student Records</h2>
+                    <p>Search, manage, track performance and enroll students in the academy.</p>
+                </div>
+                <button class="primary-btn" id="addStudentBtn">
+                    <i class="fa-solid fa-user-plus"></i> Add Student
+                </button>
+            </div>
+
+            <div class="panel">
+                <div class="toolbar">
+                    <input id="studentSearch" type="search" placeholder="Search by name, email or phone...">
+                    <select id="studentCountry">
+                        <option value="">All countries</option>
+                    </select>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th><th>Name</th><th>Email</th>
+                                <th>Country</th><th>WhatsApp</th>
+                                <th>Gender / Age</th><th>Enrolled Courses</th><th>Joined</th><th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTable">
+                            <tr><td colspan="9" class="empty">Loading students...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="table-foot" id="studentCount" style="margin-top:12px; font-size:12px; color:var(--muted);"></p>
+            </div>
+        </section>
+
+        <!-- 3. REGISTRATIONS -->
+        <section class="page-section" id="registrations">
+            <div class="section-heading">
+                <div>
+                    <h2>Registration Requests</h2>
+                    <p>Review new student registration requests, assign teachers, and approve or reject.</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="toolbar">
+                    <input id="registrationSearch" type="search" placeholder="Search by name, email, country, or course...">
+                    <select id="registrationStatus">
+                        <option value="">All statuses</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID / Date</th><th>Student</th><th>Contact</th>
+                                <th>Course(s)</th><th>Teacher Preference</th>
+                                <th>Preferred Timing</th><th>Status</th><th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="registrationsTable">
+                            <tr><td colspan="8" class="empty">Loading registrations...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PARENT REVIEWS -->
+        <section class="page-section" id="reviews">
+            <div class="section-heading">
+                <div>
+                    <h2>Parent Reviews &amp; Progress Feedback</h2>
+                    <p>Review submitted parental feedback. Approve and then Publish to display on the public website.</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="toolbar">
+                    <input id="reviewSearch" type="search" placeholder="Search by student, parent, or course...">
+                    <select id="reviewStatus">
+                        <option value="">All statuses</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                    <select id="reviewPublished">
+                        <option value="">All publication states</option>
+                        <option value="1">Published</option>
+                        <option value="0">Not Published</option>
+                    </select>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID / Date</th>
+                                <th>Student &amp; Course</th>
+                                <th>Parent Details</th>
+                                <th>Rating</th>
+                                <th>Progress Feedback &amp; Critique</th>
+                                <th>Consent</th>
+                                <th>Status</th>
+                                <th>Published</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reviewsTable">
+                            <tr><td colspan="9" class="empty">Loading parent reviews...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. TEACHERS -->
+        <section class="page-section" id="teachers">
+            <div class="section-heading">
+                <div>
+                    <h2>Teacher Management</h2>
+                    <p>Add, edit and activate or deactivate teachers.</p>
+                </div>
+                <button class="primary-btn" id="addTeacherBtn">
+                    <i class="fa-solid fa-plus"></i> Add Teacher
+                </button>
+            </div>
+
+            <div class="panel">
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th><th>Name</th><th>Email</th><th>WhatsApp</th>
+                                <th>Gender</th><th>Country</th><th>Qualification</th>
+                                <th>Status</th><th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teachersTable">
+                            <tr><td colspan="9" class="empty">Loading teachers...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. COURSES -->
+        <section class="page-section" id="courses">
+            <div class="section-heading">
+                <div>
+                    <h2>Course Management</h2>
+                    <p>Manage curriculum, visibility, and track enrollments.</p>
+                </div>
+                <button class="primary-btn" id="addCourseBtn">
+                    <i class="fa-solid fa-plus"></i> Add Course
+                </button>
+            </div>
+
+            <div class="panel">
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th><th>Course</th><th>Description</th>
+                                <th>Level / Duration</th><th>Enrolled Students</th>
+                                <th>Status</th><th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="coursesTable">
+                            <tr><td colspan="7" class="empty">Loading courses...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. WEBSITE CONTENT -->
+        <section class="page-section" id="content">
+            <div class="section-heading">
+                <div>
+                    <h2>Website Content &amp; Media</h2>
+                    <p>Edit headings, hero text, contact details, social links, and images without redeploying.</p>
+                </div>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <button class="secondary-btn" id="uploadImageBtn">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Upload Image
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Editable Site Settings</h2>
+                        <p>Each section has its own Save button. Changes appear on the public website after saving.</p>
+                    </div>
+                </div>
+                <div class="content-editor" id="contentEditor">
+                    <p class="empty">Loading website content...</p>
+                </div>
+                <p class="table-foot" style="margin-top:16px; font-size:12px; color:var(--muted);">
+                    Tip: For image fields, use <strong>Upload Image</strong> and paste the returned URL here.
+                </p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© <span id="year"></span> Jamaran Online Quran Academy · Administration Portal</p>
+        </footer>
+    </main>
+</div>
+
+<!-- STUDENT MODAL -->
+<div class="modal" id="studentModal" aria-hidden="true">
+    <div class="modal-card">
+        <div class="modal-heading">
+            <div>
+                <h2 id="studentModalTitle">Add Student</h2>
+                <p>Enter the student's personal and contact details.</p>
+            </div>
+            <button class="close-modal" data-close="studentModal" aria-label="Close">&times;</button>
+        </div>
+        <form id="studentForm">
+            <input type="hidden" id="studentId">
+            <label for="studentName">Full Name *</label>
+            <input id="studentName" required maxlength="100">
+
+            <label for="studentEmail">Email Address</label>
+            <input id="studentEmail" type="email" maxlength="150">
+
+            <div class="form-row">
+                <div>
+                    <label for="studentCountryCode">Country Code *</label>
+                    <input id="studentCountryCode" value="+92" required maxlength="6">
+                </div>
+                <div>
+                    <label for="studentWhatsApp">WhatsApp / Phone *</label>
+                    <input id="studentWhatsApp" required maxlength="25">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <label for="studentCountryInput">Country *</label>
+                    <input id="studentCountryInput" required maxlength="100">
+                </div>
+                <div>
+                    <label for="studentAge">Age *</label>
+                    <input id="studentAge" type="number" min="3" max="100" value="10" required>
+                </div>
+            </div>
+
+            <label for="studentGender">Gender *</label>
+            <select id="studentGender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" data-close="studentModal">Cancel</button>
+                <button type="submit" class="primary-btn">Save Student</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- TEACHER MODAL -->
+<div class="modal" id="teacherModal" aria-hidden="true">
+    <div class="modal-card" style="max-width:580px;">
+        <div class="modal-heading">
+            <div>
+                <h2 id="teacherModalTitle">Add Teacher</h2>
+                <p>Enter the teacher's profile and credentials.</p>
+            </div>
+            <button class="close-modal" data-close="teacherModal" aria-label="Close">&times;</button>
+        </div>
+        <form id="teacherForm">
+            <input type="hidden" id="teacherId">
+            <label for="teacherName">Full Name *</label>
+            <input id="teacherName" required maxlength="100">
+
+            <label for="teacherEmail">Email</label>
+            <input id="teacherEmail" type="email" maxlength="150">
+
+            <label for="teacherWhatsApp">WhatsApp</label>
+            <input id="teacherWhatsApp" maxlength="25">
+
+            <div class="form-row">
+                <div>
+                    <label for="teacherGender">Gender *</label>
+                    <select id="teacherGender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="teacherCountry">Country</label>
+                    <input id="teacherCountry" maxlength="100">
+                </div>
+            </div>
+
+            <label for="teacherQualification">Qualification</label>
+            <input id="teacherQualification" maxlength="150" placeholder="e.g., Dars-e-Nizami, Hafiz-e-Quran">
+
+            <label for="teacherSpecialization">Specialization</label>
+            <input id="teacherSpecialization" maxlength="150" placeholder="e.g., Quran & Tajweed">
+
+            <label for="teacherExperience">Experience</label>
+            <input id="teacherExperience" maxlength="60" placeholder="e.g., 8+ Years">
+
+            <div class="form-row">
+                <div>
+                    <label for="teacherDisplayOrder">Display Order</label>
+                    <input id="teacherDisplayOrder" type="number" min="0" value="0">
+                </div>
+            </div>
+
+            <label>Teacher Photo</label>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:8px;">
+                <input id="teacherPhoto" maxlength="255" placeholder="Paste image URL or upload →" style="flex:1; min-width:180px;">
+                <label class="secondary-btn" style="cursor:pointer; white-space:nowrap;" id="teacherPhotoUploadBtn" title="Upload photo from your computer">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload
+                    <input type="file" id="teacherPhotoFile" accept="image/*" style="display:none;">
+                </label>
+            </div>
+            <img id="teacherPhotoPreview" src="" alt="Teacher photo preview"
+                 style="display:none; width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid var(--gold); margin-bottom:10px;">
+
+            <label for="teacherBio">Bio / Notes</label>
+            <textarea id="teacherBio" rows="3" placeholder="Short teacher profile for the public page"></textarea>
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" data-close="teacherModal">Cancel</button>
+                <button type="submit" class="primary-btn">Save Teacher</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- COURSE MODAL -->
+<div class="modal" id="courseModal" aria-hidden="true">
+    <div class="modal-card" style="max-width:580px;">
+        <div class="modal-heading">
+            <div>
+                <h2 id="courseModalTitle">Add Course</h2>
+                <p>Set up course name and syllabus overview.</p>
+            </div>
+            <button class="close-modal" data-close="courseModal" aria-label="Close">&times;</button>
+        </div>
+        <form id="courseForm">
+            <input type="hidden" id="courseId">
+
+            <label for="courseName">Course Name *</label>
+            <input id="courseName" required maxlength="100">
+
+            <div class="form-row">
+                <div>
+                    <label for="courseLevel">Level</label>
+                    <input id="courseLevel" maxlength="80" placeholder="e.g., Foundation Level">
+                </div>
+                <div>
+                    <label for="courseDuration">Duration</label>
+                    <input id="courseDuration" maxlength="80" placeholder="e.g., 3-6 Months">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <label for="courseDisplayOrder">Display Order</label>
+                    <input id="courseDisplayOrder" type="number" min="0" value="0">
+                </div>
+            </div>
+
+            <label for="courseDescription">Description</label>
+            <textarea id="courseDescription" rows="4" placeholder="Short course description shown on the website"></textarea>
+
+            <label>Course Image</label>
+            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:8px;">
+                <input id="courseImage" maxlength="255" placeholder="Paste image URL or upload →" style="flex:1; min-width:180px;">
+                <label class="secondary-btn" style="cursor:pointer; white-space:nowrap;" title="Upload image from your computer">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Upload
+                    <input type="file" id="courseImageFile" accept="image/*" style="display:none;">
+                </label>
+            </div>
+            <img id="courseImagePreview" src="" alt="Course image preview"
+                 style="display:none; width:120px; height:80px; border-radius:8px; object-fit:cover; border:1px solid var(--border); margin-bottom:10px;">
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" data-close="courseModal">Cancel</button>
+                <button type="submit" class="primary-btn">Save Course</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- PARENT REVIEW EDIT MODAL -->
+<div class="modal" id="reviewModal" aria-hidden="true">
+    <div class="modal-card">
+        <div class="modal-heading">
+            <div>
+                <h2>Review Parent Feedback</h2>
+                <p>Moderate and update review details, public visibility consent, and administrative notes.</p>
+            </div>
+            <button class="close-modal" data-close="reviewModal" aria-label="Close">&times;</button>
+        </div>
+        <form id="reviewEditForm">
+            <input type="hidden" id="reviewEditId">
+
+            <label for="reviewFeedbackInput">Progress &amp; Performance Feedback *</label>
+            <textarea id="reviewFeedbackInput" rows="3" required></textarea>
+
+            <label for="reviewStrengthsInput">Student's Strengths</label>
+            <textarea id="reviewStrengthsInput" rows="2"></textarea>
+
+            <label for="reviewImproveInput">Areas for Improvement</label>
+            <textarea id="reviewImproveInput" rows="2"></textarea>
+
+            <label for="reviewCommentsInput">Parent Comments / Testimonial</label>
+            <textarea id="reviewCommentsInput" rows="2"></textarea>
+
+            <div class="form-row">
+                <div>
+                    <label for="reviewRatingInput">Rating (1 to 5 Stars)</label>
+                    <select id="reviewRatingInput">
+                        <option value="5">5 Stars (Excellent)</option>
+                        <option value="4">4 Stars (Very Good)</option>
+                        <option value="3">3 Stars (Good)</option>
+                        <option value="2">2 Stars (Fair)</option>
+                        <option value="1">1 Star (Needs Attention)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="reviewStatusSelect">Approval Status</label>
+                    <select id="reviewStatusSelect">
+                        <option value="Pending">Pending</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="margin-top:14px;">
+                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                    <input type="checkbox" id="reviewConsentInput" style="width:auto;">
+                    <span>Parent consented to anonymous public testimonial display</span>
+                </label>
+            </div>
+
+            <label for="reviewAdminNotes">Internal Admin Notes</label>
+            <input id="reviewAdminNotes" placeholder="Optional internal notes for administrative record">
+
+            <div class="modal-actions">
+                <button type="button" class="secondary-btn" data-close="reviewModal">Cancel</button>
+                <button type="submit" class="primary-btn">Update Review</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- STUDENT PERFORMANCE MODAL -->
+<div class="modal" id="performanceModal" aria-hidden="true">
+    <div class="modal-card" style="max-width:720px;">
+        <div class="modal-heading">
+            <div>
+                <h2><i class="fa-solid fa-chart-line" style="color:var(--gold);"></i> Student Performance</h2>
+                <p id="perfStudentInfo">—</p>
+            </div>
+            <button class="close-modal" data-close="performanceModal" aria-label="Close">&times;</button>
+        </div>
+
+        <!-- Add / Edit Form -->
+        <div style="background:#f8faf8; border:1px solid var(--border); border-radius:8px; padding:18px 18px 12px; margin-bottom:18px;">
+            <h3 id="perfFormTitle" style="font-size:15px; color:var(--green); margin-bottom:14px;">Add Performance Record</h3>
+            <form id="perfAddForm">
+                <input type="hidden" id="perfAddId">
+
+                <div class="form-row">
+                    <div>
+                        <label for="perfTitle">Assessment Title *</label>
+                        <input id="perfTitle" required maxlength="150" placeholder="e.g., Monthly Assessment May 2026">
+                    </div>
+                    <div>
+                        <label for="perfDate">Assessment Date</label>
+                        <input id="perfDate" type="date">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="perfCourseId">Course ID</label>
+                        <input id="perfCourseId" type="number" min="1" placeholder="Leave blank if unknown">
+                    </div>
+                    <div>
+                        <label for="perfTeacherId">Teacher ID</label>
+                        <input id="perfTeacherId" type="number" min="1" placeholder="Leave blank if unknown">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="perfScore">Score Obtained</label>
+                        <input id="perfScore" type="number" min="0" step="0.01" placeholder="e.g., 85">
+                    </div>
+                    <div>
+                        <label for="perfMaxScore">Maximum Score</label>
+                        <input id="perfMaxScore" type="number" min="0" step="0.01" placeholder="e.g., 100">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="perfAttendance">Attendance (%)</label>
+                        <input id="perfAttendance" type="number" min="0" max="100" step="0.1" placeholder="e.g., 92">
+                    </div>
+                    <div>
+                        <label for="perfLevel">Progress Level</label>
+                        <select id="perfLevel">
+                            <option value="">— Select Level —</option>
+                            <option value="Excellent">Excellent</option>
+                            <option value="Very Good">Very Good</option>
+                            <option value="Good">Good</option>
+                            <option value="Satisfactory">Satisfactory</option>
+                            <option value="Needs Improvement">Needs Improvement</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label for="perfFeedback">Teacher Feedback</label>
+                <textarea id="perfFeedback" rows="2" placeholder="Teacher's notes on student progress..."></textarea>
+
+                <label for="perfNotes">Progress Notes</label>
+                <textarea id="perfNotes" rows="2" placeholder="Additional academic progress notes..."></textarea>
+
+                <div class="modal-actions" style="margin-top:14px;">
+                    <button type="button" id="perfCancelBtn" class="secondary-btn">Clear</button>
+                    <button type="submit" class="primary-btn">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Record
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Records Table -->
+        <h3 style="font-size:14px; color:var(--muted); margin-bottom:10px;">
+            Performance History for: <strong id="perfStudentName" style="color:var(--green);">—</strong>
+        </h3>
+        <div class="table-wrap" style="max-height:320px; overflow-y:auto;">
+            <table style="font-size:12px;">
+                <thead>
+                    <tr>
+                        <th>Assessment / Date</th>
+                        <th>Course</th>
+                        <th>Teacher</th>
+                        <th>Score</th>
+                        <th>Attendance</th>
+                        <th>Level</th>
+                        <th>Feedback</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="performanceTable">
+                    <tr><td colspan="8" class="empty">Loading…</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="padding:12px 0 0; text-align:right;">
+            <button class="secondary-btn" data-close="performanceModal">Close</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

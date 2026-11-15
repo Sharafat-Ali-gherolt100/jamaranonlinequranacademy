@@ -1,0 +1,1399 @@
+/* ==============================
+   GLOBAL RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background-color: white;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ==============================
+   HEADER
+================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #126B3A;
+    border-bottom: 2px solid #c18b18;
+    z-index: 1000;
+}
+
+.navbar {
+    width: 100%;
+    height: 100%;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* ==============================
+   BRAND
+================================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #d4af37;
+    display: block;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.brand-name h3 {
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    line-height: 1;
+}
+
+.brand-name span {
+    color: #d4af37;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+
+/* ==============================
+   NAVIGATION
+================================= */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links > li > a {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-links > li > a:hover {
+    color: #d4af37;
+}
+
+
+/* ==============================
+   DROPDOWN
+================================= */
+
+.dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown > a i {
+    font-size: 10px;
+    transition: 0.3s ease;
+}
+
+.dropdown:hover > a i {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 220px;
+    background-color: white;
+    border-top: 3px solid #d4af37;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.3s ease;
+    padding: 8px 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu li a {
+    display: block;
+    color: #333;
+    padding: 10px 18px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f7f4ea;
+    color: #126B3A;
+    padding-left: 23px;
+}
+
+
+/* ==============================
+   HERO
+================================= */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px);
+    min-height: 550px;
+    margin-top: 80px;
+     background-image: url("../images/quran.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    animation: slider 15s infinite;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border-bottom: 5px solid #d4af37;
+    border-radius: 0 0 40px 40px;
+    overflow: hidden;
+    animation: slider 15s infinite;
+    
+}
+
+
+/* ==============================
+   HERO SLIDER
+================================= */
+
+@keyframes slider {
+
+    0%,
+    30% {
+        background-image: url("../images/quran.jpeg");
+    }
+
+    33%,
+    63% {
+        background-image: url("../images/Image2.png");
+    }
+
+    66%,
+    96% {
+        background-image: url("../images/image3.png");
+    }
+
+    100% {
+        background-image: url("../images/Image1.png");
+    }
+}
+
+
+/* ==============================
+   HERO OVERLAY
+================================= */
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 61, 37, 0.55);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    color: #f5f5f5;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+
+/* ==============================
+   HERO BUTTONS
+================================= */
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.enroll-btn,
+.explore-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 12px 24px;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.3s ease;
+}
+
+.enroll-btn {
+    background-color: #d4af37;
+    color: #003d25;
+}
+
+.enroll-btn:hover {
+    background-color: #c18b18;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.explore-btn {
+    background-color: transparent;
+    color: #003d25;
+    border: 2px solid #003d25;
+}
+
+.explore-btn:hover {
+    background-color: #003d25;
+    color: #d4af37;
+    border-color: #003d25;
+}
+
+.hero-buttons .explore-btn {
+    color: white;
+    border-color: #d4af37;
+}
+
+.hero-buttons .explore-btn:hover {
+    background-color: #d4af37;
+    color: #003d25;
+}
+
+
+/* ==============================
+   SECTION TITLE
+================================= */
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title span {
+    color: #c18b18;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.section-title h2 {
+    color: #0b5132;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 38px;
+    margin-top: 8px;
+}
+
+
+/* ==============================
+   ABOUT ACADEMY
+================================= */
+
+.about-academy {
+    padding: 80px 7%;
+    background-color: #fff;
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    gap: 60px;
+}
+
+.about-content h2 {
+    color: #0b5132;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 35px;
+    margin-bottom: 18px;
+}
+
+.about-content p {
+    color: #59655e;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+
+/* ==============================
+   COURSES SECTION
+================================= */
+
+.courses {
+    padding: 80px 7%;
+    background-color: #f7f4ea;
+}
+
+.course-container {
+    max-width: 1150px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.course-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+
+    text-align: center;
+
+    border-bottom: 3px solid #d4af37;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.course-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+.course-card h3 {
+    color: #0b5132;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.course-card p {
+    color: #68736d;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.course-card a {
+    color: #c18b18;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.course-card a:hover {
+    color: #0b5132;
+}
+
+
+/* ==============================
+   WHY CHOOSE US
+================================= */
+
+.why-choose {
+    padding: 80px 7%;
+    background-color: white;
+}
+
+.features-container {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.feature-box {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.feature-box i {
+    font-size: 35px;
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+.feature-box h3 {
+    color: #0b5132;
+    margin-bottom: 10px;
+}
+
+.feature-box p {
+    color: #68736d;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* ==============================
+   TRIAL BOX
+================================= */
+
+.trial-box {
+    padding: 60px 7%;
+    background-color: #0b5132;
+    text-align: center;
+}
+
+.trial-box h2 {
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.trial-box p {
+    color: #e8eee9;
+    margin-bottom: 25px;
+}
+
+
+/* ==============================
+   PARENT FEEDBACK
+================================= */
+
+.feedback {
+    padding: 80px 7%;
+    background-color: #f7f4ea;
+}
+
+.feedback-container {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.feedback-card {
+    background-color: white;
+    padding: 25px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+.feedback-card i {
+    color: #d4af37;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.feedback-card p {
+    color: #59655e;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.feedback-card h4 {
+    color: #0b5132;
+}
+
+
+/* ==================================================
+   INDIVIDUAL COURSE PAGE
+================================================== */
+
+
+/* ==============================
+   COURSE PAGE HERO
+================================= */
+
+.course-page-hero {
+    position: relative;
+
+    width: 100%;
+    min-height: 350px;
+
+    margin-top: 80px;
+
+    background:
+        linear-gradient(
+            rgba(0, 61, 37, 0.88),
+            rgba(0, 61, 37, 0.88)
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 60px 8%;
+
+    color: white;
+
+    border-bottom: 5px solid #d4af37;
+}
+
+.course-page-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+}
+
+.course-page-content span {
+    color: #d4af37;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.course-page-content h1 {
+    color: white;
+
+    font-family: "Times New Roman", Times, serif;
+
+    font-size: 48px;
+
+    margin: 10px 0 15px;
+}
+
+.course-page-content p {
+    color: #f1f5f2;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+
+/* ==============================
+   COURSE DETAILS
+================================= */
+
+.course-details {
+    padding: 80px 7%;
+    background-color: #f7f4ea;
+}
+
+.course-details-container {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 350px 1fr;
+
+    align-items: center;
+
+    gap: 60px;
+}
+
+
+/* ==============================
+   COURSE IMAGE
+================================= */
+
+.course-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.course-image img {
+    width: 280px;
+    height: 280px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    border: 5px solid #d4af37;
+
+    background-color: white;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ==============================
+   COURSE CONTENT
+================================= */
+
+.course-content {
+    max-width: 650px;
+}
+
+.course-subtitle {
+    color: #c18b18;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.course-content h2 {
+    color: #0b5132;
+
+    font-family: "Times New Roman", Times, serif;
+
+    font-size: 32px;
+
+    line-height: 1.3;
+
+    margin: 8px 0 18px;
+}
+
+.course-content p {
+    color: #59655e;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
+}
+
+.course-content h3 {
+    color: #0b5132;
+
+    font-size: 21px;
+
+    margin: 25px 0 12px;
+}
+
+
+/* ==============================
+   COURSE LIST
+================================= */
+
+.course-list {
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0 0 20px;
+}
+
+.course-list li {
+    color: #4d5a51;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.course-list li i {
+    color: #d4af37;
+
+    font-size: 14px;
+}
+
+
+/* ==============================
+   COURSE ENROLL BUTTON
+================================= */
+
+.course-content .enroll-btn {
+    margin-top: 10px;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+.footer {
+    background-color: #003d25;
+    color: white;
+    padding-top: 60px;
+}
+
+.footer-container {
+    width: 86%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        1fr
+        1fr
+        1.3fr;
+
+    gap: 40px;
+
+    padding-bottom: 45px;
+}
+
+
+/* ==============================
+   FOOTER LOGO
+================================= */
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.footer-logo img {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 2px solid #d4af37;
+}
+
+.footer-logo h2 {
+    font-family: "Times New Roman", Times, serif;
+    color: white;
+    font-size: 24px;
+}
+
+.footer-logo span {
+    color: #d4af37;
+    font-size: 11px;
+}
+
+
+/* ==============================
+   FOOTER TEXT
+================================= */
+
+.academy-info > p {
+    color: #dce7e1;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    max-width: 300px;
+
+    margin-bottom: 20px;
+}
+
+
+/* ==============================
+   FOOTER HEADINGS
+================================= */
+
+.footer-column h3 {
+    color: #d4af37;
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
+}
+
+
+/* ==============================
+   FOOTER LINKS
+================================= */
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #dce7e1;
+
+    font-size: 14px;
+
+    transition: 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #d4af37;
+
+    padding-left: 4px;
+}
+
+
+/* ==============================
+   SOCIAL LINKS
+================================= */
+
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-links a {
+    width: 35px;
+    height: 35px;
+
+    border: 1px solid #d4af37;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #d4af37;
+
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #d4af37;
+    color: #003d25;
+}
+
+
+/* ==============================
+   CONTACT INFO
+================================= */
+
+.contact-info p {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    color: #dce7e1;
+
+    font-size: 14px;
+
+    margin-bottom: 13px;
+
+    line-height: 1.5;
+}
+
+.contact-info p i {
+    color: #d4af37;
+
+    width: 18px;
+
+    margin-top: 3px;
+}
+
+
+/* ==============================
+   FOOTER BOTTOM
+================================= */
+
+.footer-bottom {
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+
+    text-align: center;
+
+    padding: 18px 6%;
+}
+
+.footer-bottom p {
+    color: #cddbd4;
+
+    font-size: 13px;
+}
+
+
+/* ==================================================
+   RESPONSIVE DESIGN
+================================================== */
+
+
+/* ==============================
+   1000px
+================================= */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .nav-links > li > a {
+        font-size: 14px;
+    }
+
+    .course-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ==============================
+   900px
+================================= */
+
+@media (max-width: 900px) {
+
+    .course-details-container {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        gap: 40px;
+    }
+
+    .course-content {
+        max-width: 700px;
+
+        margin: auto;
+    }
+
+    .course-list {
+        text-align: left;
+
+        display: inline-block;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .features-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feedback-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* ==============================
+   800px
+================================= */
+
+@media (max-width: 800px) {
+
+    header {
+        height: 70px;
+    }
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .brand-name h3 {
+        font-size: 22px;
+    }
+
+    .logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .nav-links {
+        gap: 13px;
+    }
+
+    .nav-links > li > a {
+        font-size: 13px;
+    }
+
+    .hero {
+        margin-top: 70px;
+
+        height: calc(100vh - 70px);
+
+        min-height: 500px;
+    }
+
+    .hero-content h1 {
+        font-size: 45px;
+    }
+
+    .course-page-hero {
+        margin-top: 70px;
+
+        min-height: 300px;
+    }
+
+    .course-page-content h1 {
+        font-size: 38px;
+    }
+
+    .course-page-content p {
+        font-size: 17px;
+    }
+
+}
+
+
+/* ==============================
+   700px
+================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+
+        justify-content: center;
+
+        height: auto;
+
+        min-height: 70px;
+
+        padding: 8px 4%;
+    }
+
+    header {
+        height: auto;
+        min-height: 70px;
+    }
+
+    .nav-links {
+        margin-top: 8px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px 18px;
+    }
+
+    .dropdown-menu {
+        left: 50%;
+
+        transform: translate(-50%, 10px);
+    }
+
+    .dropdown:hover .dropdown-menu {
+        transform: translate(-50%, 0);
+    }
+
+    .hero {
+        margin-top: 105px;
+
+        height: calc(100vh - 105px);
+    }
+
+    .course-page-hero {
+        margin-top: 105px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .academy-info > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .contact-info p {
+        justify-content: center;
+    }
+
+}
+
+
+/* ==============================
+   600px
+================================= */
+
+@media (max-width: 600px) {
+
+    .course-container {
+        grid-template-columns: 1fr;
+    }
+
+    .features-container {
+        grid-template-columns: 1fr;
+    }
+
+    .feedback-container {
+        grid-template-columns: 1fr;
+    }
+
+    .courses,
+    .about-academy,
+    .why-choose,
+    .feedback {
+        padding: 60px 6%;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+    }
+
+    .course-details {
+        padding: 55px 6%;
+    }
+
+    .course-image img {
+        width: 230px;
+        height: 230px;
+    }
+
+    .course-content h2 {
+        font-size: 28px;
+    }
+
+    .course-content p {
+        font-size: 14px;
+    }
+
+}
+
+
+/* ==============================
+   500px
+================================= */
+
+@media (max-width: 500px) {
+
+    .brand-name span {
+        font-size: 9px;
+    }
+
+    .brand-name h3 {
+        font-size: 20px;
+    }
+
+    .logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .nav-links {
+        gap: 8px 12px;
+    }
+
+    .nav-links > li > a {
+        font-size: 12px;
+    }
+
+    .dropdown-menu {
+        width: 200px;
+    }
+
+    .hero {
+        margin-top: 115px;
+
+        min-height: 500px;
+
+        height: calc(100vh - 115px);
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .course-page-hero {
+        margin-top: 115px;
+
+        min-height: 280px;
+
+        padding: 50px 6%;
+    }
+
+    .course-page-content h1 {
+        font-size: 30px;
+    }
+
+    .course-page-content p {
+        font-size: 15px;
+    }
+
+}
+
+
+/* ==============================
+   480px
+================================= */
+
+@media (max-width: 480px) {
+
+    .course-image img {
+        width: 210px;
+        height: 210px;
+    }
+
+    .course-content h2 {
+        font-size: 26px;
+    }
+
+    .course-content h3 {
+        font-size: 19px;
+    }
+
+    .course-list li {
+        font-size: 13px;
+    }
+
+    .enroll-btn,
+    .explore-btn {
+        padding: 11px 20px;
+        font-size: 13px;
+    }
+
+}
+
+/* =========================================================
+   FLOATING WHATSAPP BUTTON (as provided in image)
+   ========================================================= */
+.floating-whatsapp-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: #ffffff !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 99999;
+    text-decoration: none !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    cursor: pointer;
+}
+
+.floating-whatsapp-btn:hover {
+    background-color: #20ba5a;
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+    color: #ffffff !important;
+}
+
+.floating-whatsapp-btn:active {
+    transform: scale(0.96);
+}
+
+.floating-whatsapp-btn i {
+    color: #ffffff !important;
+    line-height: 1;
+}
+
+@media (max-width: 600px) {
+    .floating-whatsapp-btn {
+        bottom: 18px;
+        right: 18px;
+        width: 52px;
+        height: 52px;
+        font-size: 30px;
+    }
+}

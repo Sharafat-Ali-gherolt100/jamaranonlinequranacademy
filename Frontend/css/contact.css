@@ -1,0 +1,1267 @@
+/* ==============================
+   GLOBAL RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background-color: white;
+}
+
+
+/* ==============================
+   HEADER
+================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    border-bottom: 2px solid #c18b18;
+}
+
+
+/* ==============================
+   NAVIGATION BAR
+================================= */
+
+.navbar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    width: 100%;
+
+    height: 80px;
+
+    padding: 8px 5%;
+
+    background-color: #126B3A;
+}
+
+
+/* ==============================
+   BRAND
+================================= */
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+/* ==============================
+   LOGO
+================================= */
+
+.logo {
+    width: 62px;
+    height: 62px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    display: block;
+
+    flex-shrink: 0;
+
+    border: 2px solid #d4af37;
+
+    background-color: white;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* ==============================
+   ACADEMY NAME
+================================= */
+
+.brand-name h3 {
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin: 0;
+
+    line-height: 1.2;
+}
+
+.brand-name span {
+    display: block;
+
+    color: #d4af37;
+
+    font-size: 11px;
+
+    margin-top: 3px;
+
+    line-height: 1.2;
+}
+
+
+/* ==============================
+   NAVIGATION LINKS
+================================= */
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    list-style: none;
+
+    gap: 25px;
+
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #d4af37;
+}
+
+
+/* ==============================
+   DROPDOWN
+================================= */
+
+.dropdown {
+    position: relative;
+}
+
+
+/* Main Dropdown Link */
+
+.dropdown > a {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    white-space: nowrap;
+}
+
+
+/* Dropdown Arrow */
+
+.dropdown > a i {
+    font-size: 12px;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* Rotate Arrow */
+
+.dropdown:hover > a i {
+    transform: rotate(180deg);
+}
+
+
+/* ==============================
+   DROPDOWN MENU
+================================= */
+
+.dropdown-menu {
+    position: absolute;
+
+    top: 100%;
+
+    left: 0;
+
+    min-width: 220px;
+
+    background-color: #7ac98e;
+
+    list-style: none;
+
+    padding: 10px 0;
+
+    margin: 0;
+
+    display: none;
+
+    border-radius: 0 0 6px 6px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+    z-index: 1000;
+}
+
+
+/* Dropdown List Items */
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+
+/* Dropdown Links */
+
+.dropdown-menu a {
+    display: block;
+
+    padding: 10px 18px;
+
+    color: #222 !important;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.3s ease;
+}
+
+
+/* Dropdown Item Hover */
+
+.dropdown-menu a:hover {
+    background-color: #f5f5f5;
+
+    color: #126B3A !important;
+
+    padding-left: 22px;
+}
+
+
+/* ==============================
+   SHOW DROPDOWN
+================================= */
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+/* ==============================
+   TEACHER DROPDOWN
+================================= */
+
+.teacher-dropdown {
+    position: relative;
+}
+
+
+/* Teacher Menu Size */
+
+.teacher-dropdown .teacher-menu {
+    min-width: 190px;
+}
+
+
+/* Teacher Dropdown Links */
+
+.teacher-dropdown .teacher-menu a {
+    padding: 10px 18px;
+}
+
+
+/* Teacher Menu Hover */
+
+.teacher-dropdown .teacher-menu a:hover {
+    background-color: #f5f5f5;
+
+    color: #126B3A !important;
+
+    padding-left: 22px;
+}
+/* ==============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        padding: 8px 3%;
+    }
+
+    .brand-name h3 {
+        font-size: 17px;
+    }
+
+    .brand-name span {
+        font-size: 10px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: auto;
+
+        min-height: 75px;
+
+        padding: 7px 3%;
+    }
+
+    .logo {
+        width: 52px;
+        height: 52px;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    .brand-name h3 {
+        font-size: 15px;
+    }
+
+    .brand-name span {
+        font-size: 9px;
+    }
+
+    .nav-links {
+        gap: 8px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+}
+
+/* ==============================
+   HERO SECTION
+================================= */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 350px;
+
+    /* Space for fixed header */
+    margin-top: 80px;
+
+    background-image: url("../images/about.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: left;
+    justify-content: left;
+
+    padding: 40px 8%;
+
+    text-align: left;
+    overflow: hidden;
+
+    color: white;
+
+    /* Rounded bottom */
+    border-radius: 0 0 50% 50% / 0 0 10% 10%;
+
+    /* Borders */
+    border-top: 5px solid #d4af37;
+    border-bottom: 10px solid #d4af37;
+
+}
+
+
+/* Dark overlay */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    z-index: 1;
+}
+
+
+/* ==============================
+   HERO CONTENT
+================================= */
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    max-width: 800px;
+
+    text-align: left;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+
+    margin-bottom: 15px;
+    z-index: 3;
+
+    text-align: left;
+
+    color: #d4af37;
+}
+
+.hero-content p {
+    font-size: 20px;
+
+    margin-bottom: 20px;
+
+    text-align: left;
+
+
+    color: white;
+}
+
+/* ==============================
+   HERO BUTTONS
+================================= */
+
+.btn {
+    display: inline-block;
+
+    padding: 5px 15px;
+
+    margin: 20px 10px;
+
+    background-color: #f59e0b;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: green;
+
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: #555;
+}
+
+.secondary-btn:hover {
+    background-color: #333;
+}
+
+/* ==============================
+   CONTACT SECTION
+================================= */
+
+.contact-section {
+    padding: 90px 8%;
+    background-color: #f6f8f7;
+}
+
+
+.contact-container {
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+
+/* ==============================
+   CONTACT INFORMATION
+================================= */
+
+.contact-subtitle {
+    color: #d4af37;
+
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+.contact-info h2 {
+    color: #126B3A;
+
+    font-size: 36px;
+
+    margin: 12px 0 15px;
+}
+
+
+.contact-description {
+    color: #666;
+
+    margin-bottom: 35px;
+
+    line-height: 1.8;
+}
+
+
+/* ==============================
+   CONTACT ITEM
+================================= */
+
+.contact-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+
+.contact-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #126B3A;
+
+    color: #d4af37;
+
+    font-size: 20px;
+
+    flex-shrink: 0;
+}
+
+
+.contact-item h3 {
+    color: #126B3A;
+
+    font-size: 17px;
+
+    margin-bottom: 3px;
+}
+
+
+.contact-item p {
+    color: #666;
+
+    font-size: 15px;
+}
+
+
+/* ==============================
+   WHATSAPP BUTTON
+================================= */
+
+.contact-whatsapp-btn {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 14px 25px;
+
+    background-color: #126B3A;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    transition: 0.3s;
+}
+
+
+.contact-whatsapp-btn:hover {
+    background-color: #0c4d29;
+
+    transform: translateY(-3px);
+}
+
+
+/* ==============================
+   CONTACT FORM
+================================= */
+
+.contact-form-box {
+    background-color: white;
+
+    padding: 40px;
+
+    border-radius: 12px;
+
+    border-top: 5px solid #d4af37;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+.contact-form-box h2 {
+    color: #126B3A;
+
+    margin-bottom: 8px;
+
+    font-size: 28px;
+}
+
+
+.contact-form-box > p {
+    color: #777;
+
+    margin-bottom: 25px;
+}
+
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #126B3A;
+
+    font-weight: bold;
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    font-family: inherit;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #126B3A;
+
+    box-shadow: 0 0 5px rgba(18, 107, 58, 0.2);
+}
+
+
+.form-group textarea {
+    resize: vertical;
+}
+
+
+/* ==============================
+   SEND BUTTON
+================================= */
+
+.send-btn {
+    border: none;
+
+    padding: 14px 30px;
+
+    background-color: #126B3A;
+
+    color: white;
+
+    font-size: 16px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.send-btn:hover {
+    background-color: #d4af37;
+
+    color: #126B3A;
+
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   CONTACT CTA
+================================= */
+
+.contact-cta {
+    padding: 70px 8%;
+
+    text-align: center;
+
+    background-color: #126B3A;
+
+    color: white;
+}
+
+
+.contact-cta h2 {
+    color: #d4af37;
+
+    font-size: 30px;
+
+    margin-bottom: 12px;
+}
+
+
+.contact-cta p {
+    margin-bottom: 25px;
+
+    font-size: 17px;
+}
+
+
+.contact-cta a {
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    background-color: #d4af37;
+
+    color: #126B3A;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    transition: 0.3s;
+}
+
+
+.contact-cta a:hover {
+    background-color: white;
+
+    transform: translateY(-3px);
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 900px) {
+
+    .contact-container {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .contact-section {
+        padding: 60px 5%;
+    }
+
+
+    .contact-info h2 {
+        font-size: 28px;
+    }
+
+
+    .contact-form-box {
+        padding: 25px;
+    }
+
+
+    .contact-cta h2 {
+        font-size: 25px;
+    }
+
+}
+
+/* ==============================
+   FOOTER
+================================= */
+
+.footer {
+    position: relative;
+
+    background-color: #003d25;
+
+    color: white;
+
+    border-top: 3px solid #d4af37;
+
+    overflow: hidden;
+}
+
+/* Footer Main Container */
+
+.footer-container {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 40px 6% 30px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        0.8fr
+        1fr
+        1.2fr;
+    gap: 45px;
+}
+
+
+/* ==============================
+   ACADEMY INFORMATION
+================================= */
+
+.footer-logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    width: 55px;
+    height: 55px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid #d4af37;
+}
+
+.footer-logo h2 {
+    color: white;
+
+    font-size: 21px;
+
+    margin: 0;
+}
+
+.footer-logo span {
+    color: #d4af37;
+
+    font-size: 12px;
+}
+
+.academy-info > p {
+    max-width: 280px;
+
+    color: #d8e3dc;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin-bottom: 15px;
+}
+
+
+/* ==============================
+   FOOTER HEADINGS
+================================= */
+
+.footer-column h3 {
+    color: #d4af37;
+
+    font-size: 16px;
+
+    margin-bottom: 14px;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   FOOTER LINKS
+================================= */
+
+.footer-column ul {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+    color: #e6eee9;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #d4af37;
+
+    padding-left: 5px;
+}
+
+
+/* ==============================
+   CONTACT
+================================= */
+
+.contact-info p {
+    color: #e6eee9;
+
+    font-size: 13px;
+
+    margin-bottom: 10px;
+}
+
+
+/* ==============================
+   SOCIAL LINKS
+================================= */
+
+.social-links {
+    display: flex;
+
+    gap: 10px;
+}
+
+.social-links a {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #d4af37;
+
+    border-radius: 50%;
+
+    color: #d4af37;
+
+    text-decoration: none;
+
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #d4af37;
+
+    color: #003d25;
+}
+
+
+/* ==============================
+   COPYRIGHT
+================================= */
+
+.footer-bottom {
+    border-top: 1px solid rgba(212, 175, 55, 0.35);
+
+    text-align: center;
+
+    padding: 10px 15px;
+}
+
+.footer-bottom p {
+    color: #d8e3dc;
+
+    font-size: 11px;
+
+    margin: 0;
+}
+
+
+/* ==============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 992px) {
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .footer-container {
+        gap: 30px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .footer-container {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .academy-info > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        height: 70px;
+
+        padding: 8px 4%;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .navbar h3 {
+        font-size: 15px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .dropdown-menu {
+        min-width: 180px;
+    }
+
+    .hero {
+        height: calc(100vh - 70px);
+
+        margin-top: 70px;
+
+        padding: 40px 5%;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .hero-content p {
+        font-size: 17px;
+    }
+
+    .courses {
+        padding: 50px 5%;
+    }
+
+    .courses h2 {
+        font-size: 28px;
+    }
+
+    .course-card {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+
+/* ==============================
+   SMALL MOBILE DEVICES
+================================= */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        flex-direction: column;
+
+        height: auto;
+
+        padding: 10px;
+    }
+
+    .nav-links {
+        margin-top: 8px;
+
+        gap: 10px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .hero {
+        margin-top: 100px;
+
+        height: calc(100vh - 100px);
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 11px 18px;
+
+        font-size: 14px;
+    }
+}
+
+
+/* Change only phone number and email text color */
+
+/* Contact page phone number and email styling */
+.contact-item p {
+    color: #1e293b;
+}
+
+.contact-item p a {
+    color: #126b3a;
+    text-decoration: none;
+}
+
+/* =========================================================
+   FLOATING WHATSAPP BUTTON (as provided in image)
+   ========================================================= */
+.floating-whatsapp-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: #ffffff !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 99999;
+    text-decoration: none !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    cursor: pointer;
+}
+
+.floating-whatsapp-btn:hover {
+    background-color: #20ba5a;
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+    color: #ffffff !important;
+}
+
+.floating-whatsapp-btn:active {
+    transform: scale(0.96);
+}
+
+.floating-whatsapp-btn i {
+    color: #ffffff !important;
+    line-height: 1;
+}
+
+@media (max-width: 600px) {
+    .floating-whatsapp-btn {
+        bottom: 18px;
+        right: 18px;
+        width: 52px;
+        height: 52px;
+        font-size: 30px;
+    }
+}
+

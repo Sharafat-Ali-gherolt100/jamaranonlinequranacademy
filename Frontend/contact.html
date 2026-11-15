@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | Jamaran Online Quran Academy</title>
+
+    <link rel="stylesheet" href="css/contact.css">
+
+    <link rel="stylesheet" href="css/site-enhancements.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav class="navbar">
+
+            <div class="brand">
+                <a href="/" class="logo">
+                    <img src="images/logo (3).png"
+                         alt="Jamaran Online Quran Academy">
+                </a>
+
+                <div class="brand-name">
+                    <h3>Jamaran</h3>
+                    <span>Online Quran Academy</span>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+
+                <li class="dropdown">
+                    <a href="/courses/yassarnul_quran">
+                        Courses <i class="fas fa-chevron-down"></i>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="/courses/yassarnul_quran">Yassarnul Quran</a></li>
+                        <li><a href="/courses/quran_tajweed">Quran with Tajweed</a></li>
+                        <li><a href="/courses/duas_ziyarat">Duas &amp; Ziyaaraat</a></li>
+                        <li><a href="/courses/tafseer">Tafseer of the Quran</a></li>
+                        <li><a href="/courses/nahjul_balagha">Nahjul Balagha</a></li>
+                        <li><a href="/courses/ahkam_namaz">Ahkam &amp; Namaz</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/teacher">Teachers</a></li>
+                <li><a href="/reviews"><i class="fa-solid fa-star" style="color: #d4af37; font-size:12px;"></i> Parent Reviews</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/register">Enroll Now</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <div class="contact-container">
+
+            <!-- CONTACT INFORMATION -->
+            <div class="contact-info">
+
+                <span class="contact-subtitle">— GET IN TOUCH —</span>
+
+                <h2>We'd Love to Hear From You</h2>
+
+                <p class="contact-description">
+                    Have questions about our courses, teachers,
+                    class timings, or admissions? Contact
+                    Jamaran Online Quran Academy through WhatsApp
+                    and our team will be happy to assist you.
+                </p>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3>Call Us</h3>
+                        <p data-site="contact_phone"></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <h3>WhatsApp</h3>
+                        <p data-site="contact_whatsapp"></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <div>
+                        <h3>Languages</h3>
+                        <p data-site="contact_languages"></p>
+                    </div>
+                </div>
+
+                <a href="#"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="contact-whatsapp-btn"
+                   data-site-whatsapp-link>
+
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Chat With Us on WhatsApp
+                </a>
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+            <div class="contact-form-box">
+
+                <h2>Send Us a Message</h2>
+
+                <p>
+                    Fill out the form below and send your message
+                    directly to us through WhatsApp.
+                </p>
+
+                <form id="contact-form">
+
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            maxlength="100"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address (Optional)</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            maxlength="150">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            maxlength="25">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select Subject</option>
+                            <option value="Course Information">Course Information</option>
+                            <option value="Admission / Enrollment">Admission / Enrollment</option>
+                            <option value="Class Timings">Class Timings</option>
+                            <option value="Teacher Information">Teacher Information</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            maxlength="2000"
+                            placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+
+                    <div class="contact-form-buttons">
+
+                        <button
+                            type="button"
+                            class="send-btn"
+                            id="whatsapp-btn">
+
+                            <i class="fa-brands fa-whatsapp"></i>
+                            Send via WhatsApp
+                        </button>
+
+                    </div>
+
+                    <p id="contact-status"
+                       role="status"
+                       aria-live="polite"></p>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CONTACT CTA -->
+    <section class="contact-cta">
+
+        <h2>Start Your Quran Learning Journey Today</h2>
+
+        <p>
+            Join from anywhere and learn from qualified
+            teachers at your convenience.
+        </p>
+
+        <a href="#"
+           target="_blank"
+           rel="noopener noreferrer"
+           data-site-whatsapp-link>
+
+            <i class="fa-brands fa-whatsapp"></i>
+            Contact Us on WhatsApp
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column academy-info">
+            <div class="footer-logo">
+                <img src="/images/logo (3).png" alt="Jamaran Online Quran Academy">
+                <div>
+                    <h2>Jamaran</h2>
+                    <span>Online Quran Academy</span>
+                </div>
+            </div>
+            <p data-site="footer_about_text">
+                Learn the Quran. Understand its teachings.
+                Build a stronger connection with faith.
+            </p>
+            <div class="social-links" id="footerSocialLinks">
+                <a href="#" data-social="facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" data-social="youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" data-social="instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" data-social="linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" data-social="whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/teacher">Teachers</a></li>
+                <li><a href="/reviews">Parent Reviews</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/register">Enroll Now</a></li>
+                <li><a href="/login"><i class="fa-solid fa-lock"></i> Admin Portal</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Courses</h3>
+            <ul>
+                <li><a href="/courses/yassarnul_quran">› Yassarnul Quran</a></li>
+                <li><a href="/courses/quran_tajweed">› Quran with Tajweed</a></li>
+                <li><a href="/courses/duas_ziyarat">› Duas &amp; Ziyaaraat</a></li>
+                <li><a href="/courses/tafseer">› Tafseer of the Quran</a></li>
+                <li><a href="/courses/nahjul_balagha">› Nahjul Balagha</a></li>
+                <li><a href="/courses/ahkam_namaz">› Ahkam &amp; Namaz</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column contact-info">
+            <h3>Contact Us</h3>
+            <p><i class="fa-solid fa-phone"></i> <span data-site="contact_phone"></span></p>
+            <p><i class="fa-solid fa-envelope"></i> <span data-site="contact_email"></span></p>
+            <p><i class="fa-solid fa-location-dot"></i> <span data-site="contact_address"></span></p>
+            <p><i class="fa-solid fa-clock"></i> <span data-site="contact_hours"></span></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Jamaran Online Quran Academy. All Rights Reserved.</p>
+    </div>
+</footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="#" class="floating-whatsapp-btn" data-site-whatsapp-link target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+
+
+    <!-- WHATSAPP CONTACT FORM JAVASCRIPT -->
+    <script>
+        // The WhatsApp number is managed centrally in the admin dashboard.
+        // site.js exposes the saved settings on window.JamaranSiteContent.
+        function getCentralWhatsAppDigits() {
+            const content = window.JamaranSiteContent || {};
+            return content.contact_whatsapp_digits ||
+                String(content.contact_whatsapp || "").replace(/[^0-9]/g, "");
+        }
+
+        const contactForm = document.getElementById("contact-form");
+        const statusMessage = document.getElementById("contact-status");
+        const whatsappButton = document.getElementById("whatsapp-btn");
+
+        // Validate and collect form information
+        function getContactData() {
+            statusMessage.textContent = "";
+
+            if (!contactForm.checkValidity()) {
+                contactForm.reportValidity();
+                return null;
+            }
+
+            const data = {
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                phone: document.getElementById("phone").value.trim(),
+                subject: document.getElementById("subject").value,
+                message: document.getElementById("message").value.trim()
+            };
+
+            if (!data.name || !data.subject || !data.message) {
+                statusMessage.textContent =
+                    "Please complete all required fields.";
+                return null;
+            }
+
+            return data;
+        }
+
+        // Format the WhatsApp message
+        function createMessage(data) {
+            return `Assalamu Alaikum, Jamaran Online Quran Academy!
+
+I would like to contact your academy.
+
+Name: ${data.name}
+Email: ${data.email || "Not provided"}
+Phone: ${data.phone || "Not provided"}
+Subject: ${data.subject}
+
+Message:
+${data.message}`;
+        }
+
+        // Send message through WhatsApp
+        whatsappButton.addEventListener("click", function () {
+            const data = getContactData();
+
+            if (!data) return;
+
+            const message = createMessage(data);
+            const academyWhatsApp = getCentralWhatsAppDigits();
+
+            if (!academyWhatsApp) {
+                statusMessage.textContent =
+                    "WhatsApp contact is not configured yet. Please try again later.";
+                return;
+            }
+
+            const whatsappURL =
+                "https://wa.me/" +
+                academyWhatsApp +
+                "?text=" +
+                encodeURIComponent(message);
+
+            statusMessage.textContent =
+                "Opening WhatsApp. Review your message and press Send.";
+
+            window.open(
+                whatsappURL,
+                "_blank",
+                "noopener,noreferrer"
+            );
+        });
+    </script>
+
+    <!-- Shared site behaviour: mobile nav, dynamic content -->
+    <script src="js/site.js"></script>
+
+</body>
+</html>

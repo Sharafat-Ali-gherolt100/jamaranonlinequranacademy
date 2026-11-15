@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Enroll Now | Jamaran Online Quran Academy</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/site-enhancements.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav class="navbar">
+
+            <div class="brand">
+                <a href="/" class="logo">
+                    <img src="images/logo (3).png"
+                         alt="Jamaran Online Quran Academy">
+                </a>
+
+                <div class="brand-name">
+                    <h3>Jamaran</h3>
+                    <span>Online Quran Academy</span>
+                </div>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+
+                <li class="dropdown">
+                    <a href="/courses">
+                        Courses <i class="fas fa-chevron-down"></i>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="/courses/yassarnul_quran">Yassarnul Quran</a></li>
+                        <li><a href="/courses/quran_tajweed">Quran with Tajweed</a></li>
+                        <li><a href="/courses/duas_ziyarat">Duas &amp; Ziyaraat</a></li>
+                        <li><a href="/courses/tafseer">Tafseer of the Quran</a></li>
+                        <li><a href="/courses/nahjul_balagha">Nahjul Balagha</a></li>
+                        <li><a href="/courses/ahkam_namaz">Ahkam &amp; Namaz</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/teacher">Teachers</a></li>
+                <li><a href="/reviews"><i class="fa-solid fa-star" style="color: #d4af37; font-size:12px;"></i> Parent Reviews</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/register" aria-current="page">Enroll Now</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="register-hero">
+        <div class="register-hero-content">
+            <span>— JOIN JAMARAN ACADEMY —</span>
+            <h1>Enroll Now</h1>
+
+            <p>
+                Start your Quran and Islamic education journey
+                with our qualified teachers.
+            </p>
+        </div>
+    </section>
+
+    <!-- REGISTRATION SECTION -->
+    <section class="register-section">
+        <div class="register-container">
+
+            <!-- LEFT INFORMATION -->
+            <div class="register-info">
+
+                <span class="register-subtitle">START YOUR JOURNEY</span>
+
+                <h2>Begin Your Quran Learning Journey Today</h2>
+
+                <p>
+                    Fill out the registration form and our academy
+                    team will contact you shortly to discuss your
+                    course and class schedule.
+                </p>
+
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+
+                    <div>
+                        <h3>Qualified Teachers</h3>
+                        <p>Learn from experienced Quran and Islamic studies teachers.</p>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <h3>Flexible Timings</h3>
+                        <p>Choose a class schedule that suits your daily routine.</p>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-laptop"></i>
+                    </div>
+
+                    <div>
+                        <h3>Online Classes</h3>
+                        <p>Attend classes from anywhere through online learning.</p>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+
+                    <div>
+                        <h3>Free Trial Classes</h3>
+                        <p>Experience our teaching method before starting your course.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- REGISTRATION FORM -->
+            <div class="register-form-box">
+
+                <div class="form-heading">
+                    <h2>Student Registration</h2>
+                    <p>Please provide your information below.</p>
+                </div>
+
+                <form id="registration-form">
+
+                    <!-- FULL NAME -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                minlength="2"
+                                maxlength="100"
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email address"
+                                autocomplete="email"
+                                maxlength="150"
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- COUNTRY -->
+                    <div class="form-group">
+                        <label for="country">Country</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-globe"></i>
+
+                            <select id="country" name="country" required>
+                                <option value="">Select Country</option>
+
+                                <option value="Pakistan" data-code="+92">Pakistan</option>
+                                <option value="India" data-code="+91">India</option>
+                                <option value="Bangladesh" data-code="+880">Bangladesh</option>
+                                <option value="Malaysia" data-code="+60">Malaysia</option>
+                                <option value="Indonesia" data-code="+62">Indonesia</option>
+                                <option value="Turkey" data-code="+90">Turkey</option>
+                                <option value="United Arab Emirates" data-code="+971">United Arab Emirates</option>
+                                <option value="Saudi Arabia" data-code="+966">Saudi Arabia</option>
+                                <option value="Qatar" data-code="+974">Qatar</option>
+                                <option value="Kuwait" data-code="+965">Kuwait</option>
+                                <option value="Oman" data-code="+968">Oman</option>
+                                <option value="Bahrain" data-code="+973">Bahrain</option>
+                                <option value="United Kingdom" data-code="+44">United Kingdom</option>
+                                <option value="Germany" data-code="+49">Germany</option>
+                                <option value="France" data-code="+33">France</option>
+                                <option value="Italy" data-code="+39">Italy</option>
+                                <option value="Spain" data-code="+34">Spain</option>
+                                <option value="United States" data-code="+1">United States</option>
+                                <option value="Canada" data-code="+1">Canada</option>
+                                <option value="Australia" data-code="+61">Australia</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- PHONE -->
+                    <div class="form-group">
+                        <label for="phone">WhatsApp / Phone Number</label>
+
+                        <div class="input-box phone-input">
+                            <i class="fa-brands fa-whatsapp"></i>
+
+                            <span id="country-code" class="country-code">+92</span>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="3XX XXXXXXX"
+                                autocomplete="tel-national"
+                                minlength="5"
+                                maxlength="20"
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- AGE AND GENDER -->
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="age">Age</label>
+
+                            <div class="input-box">
+                                <i class="fa-solid fa-calendar"></i>
+
+                                <input
+                                    type="number"
+                                    id="age"
+                                    name="age"
+                                    min="3"
+                                    max="100"
+                                    step="1"
+                                    placeholder="Age"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+
+                            <div class="input-box">
+                                <i class="fa-solid fa-venus-mars"></i>
+
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- COURSE -->
+                    <div class="form-group">
+                        <label for="course">Select Course</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-book-quran"></i>
+
+                            <select id="course" name="course" required>
+                                <option value="">Choose a Course</option>
+
+                                <option value="yassarnul-quran">Yassarnul Quran</option>
+                                <option value="quran-tajweed">Quran with Tajweed</option>
+                                <option value="duas-ziyarat">Duas &amp; Ziyaraat</option>
+                                <option value="tafseer">Tafseer of the Quran</option>
+                                <option value="nahjul-balagha">Nahjul Balagha</option>
+                                <option value="ahkam-namaz">Ahkam &amp; Namaz</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- TEACHER PREFERENCE -->
+                    <div class="form-group">
+                        <label for="teacher_preference">Teacher Preference</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+
+                            <select
+                                id="teacher_preference"
+                                name="teacher_preference"
+                                required>
+
+                                <option value="">Select Preference</option>
+                                <option value="Male">Male Teacher</option>
+                                <option value="Female">Female Teacher</option>
+                                <option value="Any">No Preference</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- PREFERRED TIMING -->
+                    <div class="form-group">
+                        <label for="timing">Preferred Class Timing</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-clock"></i>
+
+                            <select id="timing" name="timing" required>
+                                <option value="">Select Preferred Timing</option>
+                                <option value="Morning">Morning</option>
+                                <option value="Afternoon">Afternoon</option>
+                                <option value="Evening">Evening</option>
+                                <option value="Night">Night</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- ADDITIONAL MESSAGE -->
+                    <div class="form-group">
+                        <label for="message">Additional Message (Optional)</label>
+
+                        <div class="input-box textarea-box">
+                            <i class="fa-solid fa-comment-dots"></i>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="4"
+                                maxlength="2000"
+                                placeholder="Tell us about your learning goals..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- FORM RESPONSE -->
+                    <div
+                        id="form-message"
+                        class="form-message"
+                        role="status"
+                        aria-live="polite"
+                        hidden>
+                    </div>
+
+                    <!-- SUBMIT -->
+                    <button
+                        type="submit"
+                        id="submit-btn"
+                        class="submit-btn">
+
+                        <span class="button-text">Submit Registration</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+
+                    <p class="form-note">
+                        <i class="fa-solid fa-lock"></i>
+                        Your information will be used for registration purposes.
+                    </p>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column academy-info">
+            <div class="footer-logo">
+                <img src="/images/logo (3).png" alt="Jamaran Online Quran Academy">
+                <div>
+                    <h2>Jamaran</h2>
+                    <span>Online Quran Academy</span>
+                </div>
+            </div>
+            <p data-site="footer_about_text">
+                Learn the Quran. Understand its teachings.
+                Build a stronger connection with faith.
+            </p>
+            <div class="social-links" id="footerSocialLinks">
+                <a href="#" data-social="facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" data-social="youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" data-social="instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" data-social="linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" data-social="whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/teacher">Teachers</a></li>
+                <li><a href="/reviews">Parent Reviews</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/register">Enroll Now</a></li>
+                <li><a href="/login"><i class="fa-solid fa-lock"></i> Admin Portal</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Courses</h3>
+            <ul>
+                <li><a href="/courses/yassarnul_quran">› Yassarnul Quran</a></li>
+                <li><a href="/courses/quran_tajweed">› Quran with Tajweed</a></li>
+                <li><a href="/courses/duas_ziyarat">› Duas &amp; Ziyaaraat</a></li>
+                <li><a href="/courses/tafseer">› Tafseer of the Quran</a></li>
+                <li><a href="/courses/nahjul_balagha">› Nahjul Balagha</a></li>
+                <li><a href="/courses/ahkam_namaz">› Ahkam &amp; Namaz</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column contact-info">
+            <h3>Contact Us</h3>
+            <p><i class="fa-solid fa-phone"></i> <span data-site="contact_phone"></span></p>
+            <p><i class="fa-solid fa-envelope"></i> <span data-site="contact_email"></span></p>
+            <p><i class="fa-solid fa-location-dot"></i> <span data-site="contact_address"></span></p>
+            <p><i class="fa-solid fa-clock"></i> <span data-site="contact_hours"></span></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Jamaran Online Quran Academy. All Rights Reserved.</p>
+    </div>
+</footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="#" class="floating-whatsapp-btn" data-site-whatsapp-link target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+
+    <!-- SWEETALERT2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- REGISTRATION LOGIC (shared) -->
+    <script src="js/register.js"></script>
+    <script src="js/site.js"></script>
+
+</body>
+</html>

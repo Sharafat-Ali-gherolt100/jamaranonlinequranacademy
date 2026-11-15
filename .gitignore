@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Environment secrets — never commit!
+.env
+Backend/.env
+
+# Database exports (may contain passwords)
+db.zip
+db_extracted/
+dbmwb/
+*.log
+
+# XAMPP / local scripts
+START.bat
+STOP.bat
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Uploaded images — keep the folder but not files
+Frontend/images/uploads/*
+!Frontend/images/uploads/.gitkeep

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Course Details | Jamaran Online Quran Academy</title>
+
+    <!-- Course & Site CSS -->
+    <link rel="stylesheet" href="/css/course/course.css">
+    <link rel="stylesheet" href="/css/site-enhancements.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <style>
+        /* Reusable dynamic course details specific styling */
+        .course-state-container {
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .course-loading-box {
+            background: #ffffff;
+            padding: 40px 50px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--gold, #d4af37);
+        }
+
+        .course-loading-box i {
+            font-size: 40px;
+            color: #126b3a;
+            margin-bottom: 15px;
+        }
+
+        .course-loading-box p {
+            font-size: 16px;
+            color: #4b6354;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .course-not-found-card {
+            background: #ffffff;
+            padding: 50px 40px;
+            border-radius: 16px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+            max-width: 540px;
+            width: 100%;
+            border-top: 4px solid #c0392b;
+        }
+
+        .course-not-found-card i.icon-nf {
+            font-size: 54px;
+            color: #c0392b;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .course-not-found-card h2 {
+            font-size: 26px;
+            color: #1a3326;
+            margin-bottom: 12px;
+        }
+
+        .course-not-found-card p {
+            font-size: 15px;
+            color: #556b5f;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* Meta badges row */
+        .course-meta-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0 25px;
+        }
+
+        .course-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: #f4faf6;
+            border: 1px solid #cde5d7;
+            border-radius: 8px;
+            font-size: 13.5px;
+            color: #1a4d31;
+        }
+
+        .course-meta-pill i {
+            color: #126b3a;
+            font-size: 14px;
+        }
+
+        .course-desc-text {
+            color: #3a4f43;
+            font-size: 15px;
+            line-height: 1.75;
+            margin-bottom: 18px;
+            white-space: pre-line;
+        }
+
+        .course-extra-section {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid #e3e8e5;
+        }
+
+        .course-extra-section h3 {
+            color: #126b3a;
+            font-size: 19px;
+            margin-bottom: 14px;
+        }
+
+        .course-requirements-text {
+            background: #fafcfb;
+            border-left: 3px solid #d4af37;
+            padding: 12px 18px;
+            border-radius: 0 8px 8px 0;
+            color: #334e3f;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .course-actions-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        /* View All Courses Button matching website theme */
+        .explore-btn,
+        .course-actions-wrap .explore-btn,
+        .course-not-found-card .explore-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            background-color: transparent;
+            color: #003d25 !important;
+            border: 2px solid #003d25 !important;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .explore-btn i,
+        .course-actions-wrap .explore-btn i,
+        .course-not-found-card .explore-btn i {
+            color: #003d25 !important;
+            transition: color 0.3s ease;
+        }
+
+        .explore-btn:hover,
+        .course-actions-wrap .explore-btn:hover,
+        .course-not-found-card .explore-btn:hover {
+            background-color: #003d25 !important;
+            color: #d4af37 !important;
+            border-color: #003d25 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 61, 37, 0.2);
+        }
+
+        .explore-btn:hover i,
+        .course-actions-wrap .explore-btn:hover i,
+        .course-not-found-card .explore-btn:hover i {
+            color: #d4af37 !important;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==============================
+     HEADER / NAVBAR
+================================= -->
+<header>
+    <nav class="navbar">
+        <div class="brand">
+            <a href="/" class="logo">
+                <img src="/images/logo (3).png" alt="Jamaran Online Quran Academy">
+            </a>
+            <div class="brand-name">
+                <h3>Jamaran</h3>
+                <span>Online Quran Academy</span>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li class="dropdown">
+                <a href="/courses" class="active">
+                    Courses <i class="fas fa-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/courses/yassarnul_quran">Yassarnul Quran</a></li>
+                    <li><a href="/courses/quran_tajweed">Quran with Tajweed</a></li>
+                    <li><a href="/courses/duas_ziyarat">Duas &amp; Ziyaraat</a></li>
+                    <li><a href="/courses/tafseer">Tafseer of the Quran</a></li>
+                    <li><a href="/courses/nahjul_balagha">Nahjul Balagha</a></li>
+                    <li><a href="/courses/ahkam_namaz">Ahkam &amp; Namaz</a></li>
+                </ul>
+            </li>
+            <li><a href="/teacher">Teachers</a></li>
+            <li><a href="/reviews">Parent Reviews</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/register" class="enroll-btn">Enroll Now</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ==============================
+     LOADING STATE
+================================= -->
+<div id="courseLoading" class="course-state-container">
+    <div class="course-loading-box">
+        <i class="fa-solid fa-circle-notch fa-spin"></i>
+        <p>Loading course details...</p>
+    </div>
+</div>
+
+<!-- ==============================
+     NOT FOUND STATE
+================================= -->
+<div id="courseNotFound" class="course-state-container" style="display:none;">
+    <div class="course-not-found-card">
+        <i class="fa-solid fa-triangle-exclamation icon-nf"></i>
+        <h2>Course Not Found</h2>
+        <p>The course you are looking for does not exist, may have been renamed, or is currently inactive.</p>
+        <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+            <a href="/courses" class="explore-btn"><i class="fa-solid fa-book-open"></i> Browse All Courses</a>
+            <a href="/" class="enroll-btn"><i class="fa-solid fa-house"></i> Go to Homepage</a>
+        </div>
+    </div>
+</div>
+
+<!-- ==============================
+     DYNAMIC COURSE CONTENT
+================================= -->
+<main id="courseContent" style="display:none;">
+    <!-- Course Page Hero -->
+    <section class="course-page-hero">
+        <div class="course-page-content">
+            <span id="heroSubtitle">— OUR COURSE —</span>
+            <h1 id="heroTitle">Course Name</h1>
+            <p id="heroSummary"></p>
+        </div>
+    </section>
+
+    <!-- Course Details Section -->
+    <section class="course-details">
+        <div class="course-details-container">
+            <!-- Left: Course Image -->
+            <div class="course-image">
+                <img id="courseImg" src="/images/quran.jpeg" alt="Course Image" loading="lazy">
+            </div>
+
+            <!-- Right: Course Content -->
+            <div class="course-content">
+                <span class="course-subtitle" id="courseSubtitle">COURSE PROGRAM</span>
+                <h2 id="courseHeading"></h2>
+
+                <!-- Metadata Row (Level, Duration, Category, Instructor) -->
+                <div class="course-meta-grid" id="courseMetaGrid"></div>
+
+                <!-- Main Description -->
+                <div class="course-desc-text" id="courseDescription"></div>
+
+                <!-- Syllabus / What You Will Learn (conditionally shown) -->
+                <div class="course-extra-section" id="syllabusSection" style="display:none;">
+                    <h3><i class="fa-solid fa-list-check" style="margin-right:8px; color:#d4af37;"></i> What You Will Learn</h3>
+                    <ul class="course-list" id="syllabusList"></ul>
+                </div>
+
+                <!-- Requirements (conditionally shown) -->
+                <div class="course-extra-section" id="requirementsSection" style="display:none;">
+                    <h3><i class="fa-solid fa-circle-info" style="margin-right:8px; color:#d4af37;"></i> Course Prerequisites</h3>
+                    <p class="course-requirements-text" id="courseRequirements"></p>
+                </div>
+
+                <!-- Enroll Actions -->
+                <div class="course-actions-wrap">
+                    <a id="courseEnrollBtn" href="/register" class="enroll-btn">
+                        <i class="fa-solid fa-user-plus"></i> Enroll Now
+                    </a>
+                    <a href="/courses" class="explore-btn">
+                        <i class="fa-solid fa-book-open"></i> View All Courses
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ==============================
+     FOOTER
+================================= -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column academy-info">
+            <div class="footer-logo">
+                <img src="/images/logo (3).png" alt="Jamaran Online Quran Academy">
+                <div>
+                    <h2>Jamaran</h2>
+                    <span>Online Quran Academy</span>
+                </div>
+            </div>
+            <p data-site="footer_about_text">
+                Learn the Quran. Understand its teachings.
+                Build a stronger connection with faith.
+            </p>
+            <div class="social-links" id="footerSocialLinks">
+                <a href="#" data-social="facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" data-social="youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" data-social="instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" data-social="linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" data-social="whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/courses">Courses</a></li>
+                <li><a href="/teacher">Teachers</a></li>
+                <li><a href="/reviews">Parent Reviews</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/register">Enroll Now</a></li>
+                <li><a href="/login"><i class="fa-solid fa-lock"></i> Admin Portal</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Courses</h3>
+            <ul>
+                <li><a href="/courses/yassarnul_quran">› Yassarnul Quran</a></li>
+                <li><a href="/courses/quran_tajweed">› Quran with Tajweed</a></li>
+                <li><a href="/courses/duas_ziyarat">› Duas &amp; Ziyaaraat</a></li>
+                <li><a href="/courses/tafseer">› Tafseer of the Quran</a></li>
+                <li><a href="/courses/nahjul_balagha">› Nahjul Balagha</a></li>
+                <li><a href="/courses/ahkam_namaz">› Ahkam &amp; Namaz</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column contact-info">
+            <h3>Contact Us</h3>
+            <p><i class="fa-solid fa-phone"></i> <span data-site="contact_phone"></span></p>
+            <p><i class="fa-solid fa-envelope"></i> <span data-site="contact_email"></span></p>
+            <p><i class="fa-solid fa-location-dot"></i> <span data-site="contact_address"></span></p>
+            <p><i class="fa-solid fa-clock"></i> <span data-site="contact_hours"></span></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Jamaran Online Quran Academy. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="#" class="floating-whatsapp-btn" data-site-whatsapp-link target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- Core JavaScript Implementation (No external frameworks) -->
+<script>
+(function () {
+    "use strict";
+
+    function escapeHTML(str) {
+        return String(str ?? "").replace(/[&<>"']/g, function (m) {
+            return {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            }[m];
+        });
+    }
+
+    // 1. Extract course slug from current browser URL
+    // Supports /courses/:slug, /courses/:slug/, and ?slug=:slug
+    function getCourseSlug() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("slug")) {
+            return urlParams.get("slug").trim();
+        }
+
+        const pathSegments = window.location.pathname.split("/").filter(Boolean);
+        // If pathname is like ["courses", "web-development"]
+        if (pathSegments.length >= 2 && pathSegments[0].toLowerCase() === "courses") {
+            return decodeURIComponent(pathSegments[1]).replace(/\.html$/i, "").trim();
+        } else if (pathSegments.length === 1 && pathSegments[0].toLowerCase() !== "courses") {
+            return decodeURIComponent(pathSegments[0]).replace(/\.html$/i, "").trim();
+        }
+        return "";
+    }
+
+    // 2. Fetch course details from backend API
+    async function loadCourseDetails() {
+        const slug = getCourseSlug();
+        const loadingEl = document.getElementById("courseLoading");
+        const notFoundEl = document.getElementById("courseNotFound");
+        const contentEl = document.getElementById("courseContent");
+
+        if (!slug) {
+            loadingEl.style.display = "none";
+            notFoundEl.style.display = "flex";
+            return;
+        }
+
+        try {
+            const res = await fetch(`/api/courses/${encodeURIComponent(slug)}`);
+            const data = await res.json().catch(function () { return {}; });
+
+            if (!res.ok || !data.success || !data.course) {
+                loadingEl.style.display = "none";
+                notFoundEl.style.display = "flex";
+                return;
+            }
+
+            renderCourse(data.course);
+            loadingEl.style.display = "none";
+            contentEl.style.display = "block";
+        } catch (err) {
+            console.error("Failed to load course details:", err);
+            loadingEl.style.display = "none";
+            notFoundEl.style.display = "flex";
+        }
+    }
+
+    // 3. Dynamically populate the HTML elements
+    function renderCourse(course) {
+        const title = course.title || course.name || course.course_name || "Course Details";
+        document.title = `${title} | Jamaran Online Quran Academy`;
+        const titleText = escapeHTML(title);
+
+        document.getElementById("heroTitle").innerHTML = titleText;
+        document.getElementById("courseHeading").innerHTML = titleText;
+        document.getElementById("courseSubtitle").textContent = (course.category || course.level || "COURSE PROGRAM").toUpperCase();
+
+        // Image
+        const imgEl = document.getElementById("courseImg");
+        const defaultImg = "/images/quran.jpeg";
+        let imgSrc = (course.image || course.image_url || defaultImg).trim();
+        if (imgSrc && !imgSrc.startsWith("http") && !imgSrc.startsWith("/")) {
+            imgSrc = "/" + imgSrc;
+        }
+        imgEl.src = imgSrc || defaultImg;
+        imgEl.alt = title;
+        imgEl.onerror = function () {
+            this.onerror = null;
+            this.src = defaultImg;
+        };
+
+        // Description
+        const desc = (course.description || "Learn and master with certified teachers at Jamaran Online Quran Academy.").trim();
+        document.getElementById("courseDescription").textContent = desc;
+
+        // Hero summary (short first sentence)
+        const summary = desc.length > 120 ? desc.slice(0, 117) + "..." : desc;
+        document.getElementById("heroSummary").textContent = summary;
+
+        // Dynamic Meta Badges (Level, Duration, Category, Instructor)
+        const metaGrid = document.getElementById("courseMetaGrid");
+        metaGrid.innerHTML = "";
+
+        if (course.level) {
+            metaGrid.innerHTML += `<div class="course-meta-pill"><i class="fa-solid fa-graduation-cap"></i> <span><strong>Level:</strong> ${escapeHTML(course.level)}</span></div>`;
+        }
+
+        if (course.duration) {
+            metaGrid.innerHTML += `<div class="course-meta-pill"><i class="fa-regular fa-clock"></i> <span><strong>Duration:</strong> ${escapeHTML(course.duration)}</span></div>`;
+        }
+
+        if (course.category && course.category !== course.level) {
+            metaGrid.innerHTML += `<div class="course-meta-pill"><i class="fa-solid fa-layer-group"></i> <span><strong>Category:</strong> ${escapeHTML(course.category)}</span></div>`;
+        }
+
+        if (course.instructor) {
+            metaGrid.innerHTML += `<div class="course-meta-pill"><i class="fa-solid fa-chalkboard-user"></i> <span><strong>Instructor:</strong> ${escapeHTML(course.instructor)}</span></div>`;
+        }
+
+        // Syllabus / Learning objectives
+        const syllabusSection = document.getElementById("syllabusSection");
+        const syllabusList = document.getElementById("syllabusList");
+        let items = [];
+
+        if (course.syllabus && typeof course.syllabus === "string" && course.syllabus.trim()) {
+            items = course.syllabus.split(/[\r\n]+/).map(function (s) { return s.replace(/^[-*•\d.]+\s*/, "").trim(); }).filter(Boolean);
+        } else if (Array.isArray(course.syllabus) && course.syllabus.length > 0) {
+            items = course.syllabus;
+        }
+
+        if (items.length > 0) {
+            syllabusList.innerHTML = items.map(function (item) {
+                return `<li><i class="fa-solid fa-check"></i> ${escapeHTML(item)}</li>`;
+            }).join("");
+            syllabusSection.style.display = "block";
+        } else {
+            // Provide clean tailored objectives if syllabus field not populated
+            syllabusList.innerHTML = `
+                <li><i class="fa-solid fa-check"></i> One-to-one interactive online sessions with qualified teachers</li>
+                <li><i class="fa-solid fa-check"></i> Structured step-by-step curriculum tailored to student level</li>
+                <li><i class="fa-solid fa-check"></i> Proper Tajweed, pronunciation, and practice</li>
+                <li><i class="fa-solid fa-check"></i> Flexible scheduling and regular progress monitoring</li>
+            `;
+            syllabusSection.style.display = "block";
+        }
+
+        // Requirements
+        const reqSection = document.getElementById("requirementsSection");
+        const reqText = document.getElementById("courseRequirements");
+        if (course.requirements && String(course.requirements).trim()) {
+            reqText.textContent = String(course.requirements).trim();
+            reqSection.style.display = "block";
+        } else {
+            reqSection.style.display = "none";
+        }
+
+        // Enroll Button
+        const enrollBtn = document.getElementById("courseEnrollBtn");
+        const enrollQuery = course.slug || course.name || course.course_name || "";
+        enrollBtn.href = `/register?course=${encodeURIComponent(enrollQuery)}`;
+    }
+
+    document.addEventListener("DOMContentLoaded", loadCourseDetails);
+})();
+</script>
+
+<!-- Shared site.js for mobile navbar, central WhatsApp number, and dynamic site content -->
+<script src="/js/site.js"></script>
+
+</body>
+</html>

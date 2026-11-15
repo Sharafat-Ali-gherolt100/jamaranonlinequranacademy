@@ -1,0 +1,1895 @@
+/* ==============================
+   GLOBAL RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background-color: white;
+}
+
+
+/* ==============================
+   HEADER
+================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    border-bottom: 2px solid #c18b18;
+}
+
+
+/* ==============================
+   NAVIGATION BAR
+================================= */
+
+.navbar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    width: 100%;
+
+    height: 80px;
+
+    padding: 8px 5%;
+
+    background-color: #126B3A;
+}
+
+
+/* ==============================
+   BRAND
+================================= */
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+/* ==============================
+   LOGO
+================================= */
+
+.logo {
+    width: 62px;
+    height: 62px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    display: block;
+
+    flex-shrink: 0;
+
+    border: 2px solid #d4af37;
+
+    background-color: white;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* ==============================
+   ACADEMY NAME
+================================= */
+
+.brand-name h3 {
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin: 0;
+
+    line-height: 1.2;
+}
+
+.brand-name span {
+    display: block;
+
+    color: #d4af37;
+
+    font-size: 11px;
+
+    margin-top: 3px;
+
+    line-height: 1.2;
+}
+
+
+/* ==============================
+   NAVIGATION LINKS
+================================= */
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    list-style: none;
+
+    gap: 25px;
+
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #d4af37;
+}
+
+
+/* ==============================
+   DROPDOWN
+================================= */
+
+.dropdown {
+    position: relative;
+}
+
+
+/* Main Dropdown Link */
+
+.dropdown > a {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    white-space: nowrap;
+}
+
+
+/* Dropdown Arrow */
+
+.dropdown > a i {
+    font-size: 12px;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* Rotate Arrow */
+
+.dropdown:hover > a i {
+    transform: rotate(180deg);
+}
+
+
+/* ==============================
+   DROPDOWN MENU
+================================= */
+
+.dropdown-menu {
+    position: absolute;
+
+    top: 100%;
+
+    left: 0;
+
+    min-width: 220px;
+
+    background-color: #7ac98e;
+
+    list-style: none;
+
+    padding: 10px 0;
+
+    margin: 0;
+
+    display: none;
+
+    border-radius: 0 0 6px 6px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+    z-index: 1000;
+}
+
+
+/* Dropdown List Items */
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+
+/* Dropdown Links */
+
+.dropdown-menu a {
+    display: block;
+
+    padding: 10px 18px;
+
+    color: #222 !important;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.3s ease;
+}
+
+
+/* Dropdown Item Hover */
+
+.dropdown-menu a:hover {
+    background-color: #f5f5f5;
+
+    color: #126B3A !important;
+
+    padding-left: 22px;
+}
+
+
+/* ==============================
+   SHOW DROPDOWN
+================================= */
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+/* ==============================
+   TEACHER DROPDOWN
+================================= */
+
+.teacher-dropdown {
+    position: relative;
+}
+
+
+/* Teacher Menu Size */
+
+.teacher-dropdown .teacher-menu {
+    min-width: 190px;
+}
+
+
+/* Teacher Dropdown Links */
+
+.teacher-dropdown .teacher-menu a {
+    padding: 10px 18px;
+}
+
+
+/* Teacher Menu Hover */
+
+.teacher-dropdown .teacher-menu a:hover {
+    background-color: #f5f5f5;
+
+    color: #126B3A !important;
+
+    padding-left: 22px;
+}
+/* ==============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        padding: 8px 3%;
+    }
+
+    .brand-name h3 {
+        font-size: 17px;
+    }
+
+    .brand-name span {
+        font-size: 10px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: auto;
+
+        min-height: 75px;
+
+        padding: 7px 3%;
+    }
+
+    .logo {
+        width: 52px;
+        height: 52px;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    .brand-name h3 {
+        font-size: 15px;
+    }
+
+    .brand-name span {
+        font-size: 9px;
+    }
+
+    .nav-links {
+        gap: 8px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+}
+
+/* ==============================
+   HERO SECTION
+================================= */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 350px;
+
+    /* Space for fixed header */
+    margin-top: 80px;
+
+    background-image: url("../images/about.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: left;
+    justify-content: left;
+
+    padding: 40px 8%;
+
+    text-align: left;
+    overflow: hidden;
+
+    color: white;
+
+    /* Rounded bottom */
+    border-radius: 0 0 50% 50% / 0 0 10% 10%;
+
+    /* Borders */
+    border-top: 5px solid #d4af37;
+    border-bottom: 10px solid #d4af37;
+
+}
+
+
+/* Dark overlay */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+
+    z-index: 1;
+}
+
+
+/* ==============================
+   HERO CONTENT
+================================= */
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    max-width: 800px;
+
+    text-align: left;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+
+    margin-bottom: 15px;
+    z-index: 3;
+
+    text-align: left;
+
+    color: #d4af37;
+}
+
+.hero-content p {
+    font-size: 20px;
+
+    margin-bottom: 20px;
+
+    text-align: left;
+
+
+    color: white;
+}
+
+/* ==============================
+   HERO BUTTONS
+================================= */
+
+.btn {
+    display: inline-block;
+
+    padding: 5px 15px;
+
+    margin: 20px 10px;
+
+    background-color: #f59e0b;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: green;
+
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: #555;
+}
+
+.secondary-btn:hover {
+    background-color: #333;
+}
+/* ==============================
+   ABOUT HERO
+================================= */
+
+.about-hero {
+    position: relative;
+
+    height: 400px;
+
+    margin-top: 80px;
+
+    background-image: url("../images/about-quran.png");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+
+    overflow: hidden;
+}
+
+
+.about-hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+}
+
+
+.about-hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 750px;
+
+    padding: 20px;
+}
+
+
+.about-hero-content span {
+    color: #d4af37;
+
+    font-size: 16px;
+
+    font-weight: bold;
+}
+
+
+.about-hero-content h1 {
+    font-size: 48px;
+
+    margin: 15px 0;
+}
+
+
+.about-hero-content p {
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* ==============================
+   ABOUT ACADEMY
+================================= */
+
+.about-academy-section {
+    padding: 90px 8%;
+
+    background-color: #ffffff;
+}
+
+
+.about-academy-container {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+.about-academy-image img {
+    width: 100%;
+
+    border-radius: 15px;
+
+    display: block;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+.section-subtitle {
+    color: #c18b18;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+.about-academy-content h2 {
+    font-size: 38px;
+
+    color: #126B3A;
+
+    margin: 15px 0 20px;
+}
+
+
+.about-academy-content > p {
+    color: #555;
+
+    margin-bottom: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* ==============================
+   ACADEMY FEATURES
+================================= */
+
+.academy-features {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+
+    margin-top: 35px;
+}
+
+
+.academy-feature {
+    display: flex;
+
+    gap: 12px;
+
+    align-items: flex-start;
+}
+
+
+.academy-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: #126B3A;
+
+    color: #d4af37;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+}
+
+
+.academy-feature h3 {
+    color: #126B3A;
+
+    font-size: 17px;
+
+    margin-bottom: 5px;
+}
+
+
+.academy-feature p {
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+/* ==============================
+   SECTION HEADING
+================================= */
+
+.section-heading {
+    text-align: center;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+
+.section-heading span {
+    color: #c18b18;
+
+    font-weight: bold;
+
+    font-size: 14px;
+}
+
+
+.section-heading h2 {
+    color: #126B3A;
+
+    font-size: 36px;
+
+    margin: 10px 0 15px;
+}
+
+
+.section-heading p {
+    color: #666;
+}
+
+
+/* ==============================
+   ABOUT COURSES
+================================= */
+
+.about-courses {
+    padding: 90px 8%;
+
+    background-color: #f5f8f6;
+}
+
+
+.about-course-grid {
+    max-width: 1200px;
+
+    margin: 50px auto 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+.about-course-card {
+    background: white;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    transition: 0.3s ease;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+.about-course-card:hover {
+    transform: translateY(-8px);
+}
+
+
+.about-course-card i {
+    font-size: 35px;
+
+    color: #c18b18;
+
+    margin-bottom: 18px;
+}
+
+
+.about-course-card h3 {
+    color: #126B3A;
+
+    margin-bottom: 10px;
+}
+
+
+.about-course-card p {
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+/* ==============================
+   OWNER SECTION
+================================= */
+
+.owner-section {
+    padding: 90px 8%;
+
+    background-color: white;
+}
+
+
+.owner-container {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 400px 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+.owner-image img {
+    width: 100%;
+
+    height: 450px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    border: 4px solid #d4af37;
+}
+
+
+.owner-content h2 {
+    color: #126B3A;
+
+    font-size: 38px;
+
+    margin: 12px 0;
+}
+
+
+.owner-content h3 {
+    color: #c18b18;
+
+    font-size: 22px;
+
+    margin-top: 15px;
+}
+
+
+.owner-position {
+    color: #777;
+
+    margin-bottom: 25px;
+
+    font-style: italic;
+}
+
+
+.owner-content > p {
+    color: #555;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
+}
+
+
+.owner-btn {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 13px 25px;
+
+    background-color: #126B3A;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    transition: 0.3s;
+}
+
+
+.owner-btn:hover {
+    background-color: #c18b18;
+}
+/* ==============================
+   OUR STUDENTS SECTION
+================================= */
+
+.our-students {
+    padding: 90px 8%;
+    background-color: #ffffff;
+}
+
+
+/* ==============================
+   STUDENT CATEGORY
+================================= */
+
+.student-category {
+    max-width: 1200px;
+    margin: 60px auto 0;
+}
+
+
+.enrolled-category {
+    margin-top: 80px;
+}
+
+
+/* ==============================
+   CATEGORY TITLE
+================================= */
+
+.student-category-title {
+    text-align: center;
+    color: #126B3A;
+    font-size: 28px;
+    margin-bottom: 35px;
+}
+
+
+.student-category-title i {
+    color: #d4af37;
+    margin-right: 10px;
+}
+
+
+/* ==============================
+   STUDENTS GRID
+================================= */
+
+.students-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+
+/* ==============================
+   STUDENT CARD
+================================= */
+
+.student-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+
+    transition: 0.3s ease;
+}
+
+
+.student-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ==============================
+   STUDENT IMAGE
+================================= */
+
+.student-image {
+    position: relative;
+
+    width: 100%;
+    height: 250px;
+
+    overflow: hidden;
+}
+
+
+.student-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: 0.4s ease;
+}
+
+
+.student-card:hover .student-image img {
+    transform: scale(1.08);
+}
+
+
+/* ==============================
+   STUDENT STATUS
+================================= */
+
+.student-status {
+    position: absolute;
+
+    bottom: 15px;
+    right: 15px;
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+.completed-status {
+    background-color: #126B3A;
+}
+
+
+.enrolled-status {
+    background-color: #126B3A;
+}
+
+
+/* ==============================
+   STUDENT INFORMATION
+================================= */
+
+.student-info {
+    padding: 25px;
+}
+
+
+.student-info h3 {
+    color: #126B3A;
+
+    font-size: 21px;
+
+    margin-bottom: 10px;
+}
+
+
+.student-course {
+    color: #c18b18;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+
+.student-course i {
+    margin-right: 5px;
+}
+
+
+.student-message {
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+/* ==============================
+   PROGRESS SECTION
+================================= */
+
+.progress-box {
+    margin-top: 20px;
+}
+
+
+.progress-text {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    color: #555;
+
+    font-size: 13px;
+}
+
+
+.progress-bar {
+    width: 100%;
+
+    height: 8px;
+
+    background-color: #e6e6e6;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+.progress {
+    height: 100%;
+
+    background-color: #126B3A;
+
+    border-radius: 10px;
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 900px) {
+
+    .students-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .our-students {
+        padding: 70px 5%;
+    }
+
+
+    .students-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .student-category-title {
+        font-size: 23px;
+    }
+
+
+    .student-image {
+        height: 280px;
+    }
+
+}
+
+/* ==============================
+   WHY CHOOSE US
+================================= */
+
+.about-why-us {
+    padding: 90px 8%;
+
+    background-color: #f5f8f6;
+}
+
+
+.about-benefits-grid {
+    max-width: 1100px;
+
+    margin: 50px auto 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+
+.about-benefit {
+    text-align: center;
+
+    background-color: white;
+
+    padding: 35px 20px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+.about-benefit i {
+    font-size: 32px;
+
+    color: #c18b18;
+
+    margin-bottom: 15px;
+}
+
+
+.about-benefit h3 {
+    color: #126B3A;
+
+    margin-bottom: 10px;
+}
+
+
+.about-benefit p {
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+/* ==============================
+   CALL TO ACTION
+================================= */
+
+.about-cta {
+    padding: 80px 20px;
+
+    background-color: #126B3A;
+
+    text-align: center;
+
+    color: white;
+}
+
+
+.about-cta h2 {
+    font-size: 36px;
+
+    margin-bottom: 15px;
+}
+
+
+.about-cta p {
+    margin-bottom: 25px;
+
+    font-size: 17px;
+}
+
+
+.about-cta a {
+    display: inline-block;
+
+    padding: 14px 30px;
+
+    background-color: #d4af37;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 900px) {
+
+    .about-academy-container {
+        grid-template-columns: 1fr;
+    }
+
+    .owner-container {
+        grid-template-columns: 1fr;
+    }
+
+    .owner-image {
+        max-width: 400px;
+
+        margin: auto;
+    }
+
+    .about-course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .about-hero {
+        height: 350px;
+    }
+
+    .about-hero-content h1 {
+        font-size: 36px;
+    }
+
+    .about-academy-content h2,
+    .owner-content h2,
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    .academy-features {
+        grid-template-columns: 1fr;
+    }
+
+    .about-course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* ==============================
+   FOOTER
+================================= */
+
+.footer {
+    position: relative;
+
+    background-color: #003d25;
+
+    color: white;
+
+    border-top: 3px solid #d4af37;
+
+    overflow: hidden;
+}
+
+/* Footer Main Container */
+
+.footer-container {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 35px 6% 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        0.8fr
+        1fr
+        1.2fr;
+    gap: 50px;
+}
+
+
+/* ==============================
+   ACADEMY INFORMATION
+================================= */
+
+.footer-logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    width: 55px;
+    height: 55px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid #d4af37;
+}
+
+.footer-logo h2 {
+    color: white;
+
+    font-size: 22px;
+
+    margin: 0;
+}
+
+.footer-logo span {
+    color: #d4af37;
+
+    font-size: 12px;
+}
+
+.academy-info > p {
+    max-width: 270px;
+
+    color: #d8e3dc;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-bottom: 15px;
+}
+
+
+/* ==============================
+   FOOTER HEADINGS
+================================= */
+
+.footer-column h3 {
+    color: #d4af37;
+
+    font-size: 16px;
+
+    margin-bottom: 12px;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   FOOTER LINKS
+================================= */
+
+.footer-column ul {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+    color: #e6eee9;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #d4af37;
+
+    padding-left: 4px;
+}
+
+
+/* ==============================
+   CONTACT
+================================= */
+
+.contact-info p {
+    color: #e6eee9;
+
+    font-size: 13px;
+
+    margin-bottom: 9px;
+}
+
+
+/* ==============================
+   SOCIAL LINKS
+================================= */
+
+.social-links {
+    display: flex;
+
+    gap: 10px;
+}
+
+.social-links a {
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #d4af37;
+
+    border-radius: 50%;
+
+    color: #d4af37;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #d4af37;
+
+    color: #003d25;
+}
+
+
+/* ==============================
+   COPYRIGHT
+================================= */
+
+.footer-bottom {
+    border-top: 1px solid rgba(212, 175, 55, 0.35);
+
+    text-align: center;
+
+    padding: 8px 15px;
+}
+
+.footer-bottom p {
+    color: #d8e3dc;
+
+    font-size: 11px;
+
+    margin: 0;
+}
+
+
+/* ==============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 900px) {
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 35px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .footer-container {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        gap: 30px;
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .academy-info > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-column ul li a:hover {
+        padding-left: 0;
+    }
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        height: 70px;
+
+        padding: 8px 4%;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .navbar h3 {
+        font-size: 15px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .dropdown-menu {
+        min-width: 180px;
+    }
+
+    .hero {
+        height: calc(100vh - 70px);
+
+        margin-top: 70px;
+
+        padding: 40px 5%;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .hero-content p {
+        font-size: 17px;
+    }
+
+    .courses {
+        padding: 50px 5%;
+    }
+
+    .courses h2 {
+        font-size: 28px;
+    }
+
+    .course-card {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+
+/* ==============================
+   SMALL MOBILE DEVICES
+================================= */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        flex-direction: column;
+
+        height: auto;
+
+        padding: 10px;
+    }
+
+    .nav-links {
+        margin-top: 8px;
+
+        gap: 10px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .hero {
+        margin-top: 100px;
+
+        height: calc(100vh - 100px);
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 11px 18px;
+
+        font-size: 14px;
+    }
+}
+/* ==============================
+   TOTAL ENROLLED STUDENTS COUNTER
+================================= */
+
+.total-enrolled-counter {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 35px;
+    padding: 25px 20px;
+
+    text-align: center;
+
+    background-color: #f0f8f1;
+    border: 2px solid #d4af37;
+    border-radius: 14px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.total-enrolled-counter:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.total-enrolled-counter > i {
+    font-size: 30px;
+    color: #126B3A;
+
+    margin-bottom: 8px;
+}
+
+.total-enrolled-counter h3 {
+    margin: 10px 0 5px;
+
+    color: #126B3A;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.total-enrolled-counter #totalEnrolledCount {
+    font-size: 42px;
+    font-weight: 700;
+
+    color: #126B3A;
+
+    margin: 0;
+    line-height: 1.3;
+}
+
+.total-enrolled-counter p:last-child {
+    margin: 5px 0 0;
+
+    color: #555;
+    font-size: 14px;
+}
+
+/* Counter on mobile devices */
+@media (max-width: 600px) {
+    .total-enrolled-counter {
+        max-width: 100%;
+        padding: 22px 15px;
+        margin-bottom: 30px;
+    }
+
+    .total-enrolled-counter h3 {
+        font-size: 19px;
+    }
+
+    .total-enrolled-counter #totalEnrolledCount {
+        font-size: 36px;
+    }
+}
+
+
+/* ==============================================
+   RESPONSIVE FIXES — Added by site enhancement
+   ============================================== */
+
+/* Ensure about hero accounts for mobile header height */
+@media (max-width: 992px) {
+    .hero {
+        margin-top: 72px;
+        height: auto;
+        min-height: 280px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        margin-top: 72px;
+        height: auto;
+        min-height: 240px;
+        padding: 35px 6%;
+        border-radius: 0 0 30% 30% / 0 0 6% 6%;
+    }
+
+    .hero-content h1 {
+        font-size: 28px !important;
+    }
+
+    .hero-content p {
+        font-size: 15px !important;
+    }
+
+    /* About main section */
+    .about-academy-container {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .about-academy-image img {
+        max-width: 200px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Owner section */
+    .owner-container {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .owner-image img {
+        max-width: 200px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* Course grid */
+    .about-course-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+
+    /* Student grid */
+    .students-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Benefits grid */
+    .about-benefits-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Total counter */
+    .total-enrolled-counter {
+        margin-left: 16px !important;
+        margin-right: 16px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .about-course-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* =========================================================
+   FLOATING WHATSAPP BUTTON (as provided in image)
+   ========================================================= */
+.floating-whatsapp-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: #ffffff !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 99999;
+    text-decoration: none !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    cursor: pointer;
+}
+
+.floating-whatsapp-btn:hover {
+    background-color: #20ba5a;
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+    color: #ffffff !important;
+}
+
+.floating-whatsapp-btn:active {
+    transform: scale(0.96);
+}
+
+.floating-whatsapp-btn i {
+    color: #ffffff !important;
+    line-height: 1;
+}
+
+@media (max-width: 600px) {
+    .floating-whatsapp-btn {
+        bottom: 18px;
+        right: 18px;
+        width: 52px;
+        height: 52px;
+        font-size: 30px;
+    }
+}

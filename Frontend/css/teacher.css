@@ -1,0 +1,1133 @@
+/* =========================================
+   JAMARAN ONLINE QURAN ACADEMY
+   TEACHER PAGE — UPDATED COMPLETE CSS
+   Header & Footer: Same as About Page
+========================================= */
+
+/* =========================================
+   1. GLOBAL RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+:root {
+    --primary: #126B3A;
+    --primary-dark: #0b5132;
+    --footer-bg: #003d25;
+    --gold: #d4af37;
+    --gold-dark: #c18b18;
+    --cream: #f7f4ea;
+    --light-green: #eef4ee;
+    --text-dark: #26352c;
+    --text-light: #59655e;
+    --white: #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background-color: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+/* =========================================
+   2. HEADER — SAME AS ABOUT PAGE
+========================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 2px solid #c18b18;
+    background-color: #126B3A;
+}
+
+/* NAVIGATION BAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    padding: 8px 5%;
+    background-color: #126B3A;
+}
+
+/* BRAND */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* LOGO */
+
+.logo {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;
+    flex-shrink: 0;
+    border: 2px solid #d4af37;
+    background-color: white;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ACADEMY NAME */
+
+.brand-name h3 {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.brand-name span {
+    display: block;
+    color: #d4af37;
+    font-size: 11px;
+    margin-top: 3px;
+    line-height: 1.2;
+}
+
+/* NAVIGATION LINKS */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #d4af37;
+}
+
+/* DROPDOWN */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.dropdown > a i {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover > a i,
+.dropdown:focus-within > a i {
+    transform: rotate(180deg);
+}
+
+/* DROPDOWN MENU */
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background-color: #7ac98e;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    display: none;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 18px;
+    color: #222 !important;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f5f5f5;
+    color: #126B3A !important;
+    padding-left: 22px;
+}
+
+/* TEACHER DROPDOWN */
+
+.teacher-dropdown {
+    position: relative;
+}
+
+.teacher-dropdown .teacher-menu {
+    min-width: 190px;
+}
+
+.teacher-dropdown .teacher-menu a {
+    padding: 10px 18px;
+}
+
+.teacher-dropdown .teacher-menu a:hover {
+    background-color: #f5f5f5;
+    color: #126B3A !important;
+    padding-left: 22px;
+}
+
+/* =========================================
+   3. TEACHER HERO
+========================================= */
+
+.teacher-hero {
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    margin-top: 80px;
+    background: linear-gradient(
+        rgba(0, 61, 37, 0.94),
+        rgba(0, 61, 37, 0.94)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 65px 8%;
+    color: var(--white);
+    border-bottom: 5px solid var(--gold);
+}
+
+.teacher-hero-content {
+    max-width: 850px;
+    margin: auto;
+}
+
+.teacher-hero-content span {
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.teacher-hero-content h1 {
+    color: var(--white);
+    font-family: "Times New Roman", Times, serif;
+    font-size: 48px;
+    line-height: 1.2;
+    margin: 12px 0 18px;
+}
+
+.teacher-hero-content p {
+    color: #f1f5f2;
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* =========================================
+   4. TEACHER STATISTICS
+========================================= */
+
+.teacher-stats {
+    padding: 60px 7%;
+    background: var(--cream);
+}
+
+.stats-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.stat-card {
+    background: var(--white);
+    text-align: center;
+    padding: 25px 15px;
+    border-top: 3px solid var(--gold);
+    border-radius: 8px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+}
+
+.stat-card h2 {
+    color: var(--primary-dark);
+    font-family: "Times New Roman", Times, serif;
+    font-size: 25px;
+    margin-bottom: 4px;
+}
+
+.stat-card p {
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+/* =========================================
+   5. SECTION HEADINGS
+========================================= */
+
+.section-heading {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 45px;
+}
+
+.section-heading span {
+    color: var(--gold-dark);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.section-heading h2 {
+    color: var(--primary-dark);
+    font-family: "Times New Roman", Times, serif;
+    font-size: 36px;
+    line-height: 1.3;
+    margin: 8px 0 12px;
+}
+
+.section-heading p {
+    color: var(--text-light);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   6. TEACHER SECTIONS
+========================================= */
+
+.teachers-section {
+    padding: 80px 7%;
+}
+
+.male-teachers {
+    background: var(--white);
+}
+
+.female-teachers {
+    background: var(--cream);
+}
+
+/* TEACHER GRID */
+
+.teacher-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+
+/* TEACHER CARD */
+
+.teacher-card {
+    min-width: 0;
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.teacher-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.13);
+    border-color: var(--gold);
+}
+
+/* TEACHER IMAGE */
+
+.teacher-card-image {
+    position: relative;
+    height: 280px;
+    background: #e8eee9;
+    overflow: hidden;
+}
+
+.teacher-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.teacher-card:hover .teacher-card-image img {
+    transform: scale(1.04);
+}
+
+/* TEACHER CATEGORY */
+
+.teacher-category {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    background: var(--primary);
+    color: var(--white);
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* TEACHER CONTENT */
+
+.teacher-card-content {
+    padding: 25px 22px;
+}
+
+.teacher-card-content h3 {
+    color: var(--primary-dark);
+    font-family: "Times New Roman", Times, serif;
+    font-size: 23px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+}
+
+.teacher-card-content h4 {
+    color: var(--gold-dark);
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+/* TEACHER DETAILS */
+
+.teacher-details p {
+    color: var(--text-light);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+}
+
+.teacher-details p i {
+    color: var(--primary);
+    width: 16px;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.teacher-details strong {
+    color: var(--primary-dark);
+}
+
+/* =========================================
+   7. TEACHING APPROACH
+========================================= */
+
+.teaching-section {
+    padding: 80px 7%;
+    background: var(--white);
+}
+
+.teaching-container {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.teaching-card {
+    text-align: center;
+    padding: 30px 20px;
+    background: var(--cream);
+    border-bottom: 3px solid var(--gold);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teaching-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+}
+
+.teaching-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: var(--gold);
+    font-size: 22px;
+}
+
+.teaching-card h3 {
+    color: var(--primary-dark);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.teaching-card p {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   8. TEACHER COURSES
+========================================= */
+
+.teacher-courses {
+    padding: 80px 7%;
+    background: var(--cream);
+}
+
+.teacher-course-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.teacher-course-card {
+    background: var(--white);
+    padding: 30px 25px;
+    border-radius: 10px;
+    border-top: 3px solid var(--gold);
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teacher-course-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.teacher-course-card > i {
+    color: var(--primary);
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.teacher-course-card h3 {
+    color: var(--primary-dark);
+    font-family: "Times New Roman", Times, serif;
+    font-size: 21px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.teacher-course-card p {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.teacher-course-card a {
+    display: inline-block;
+    color: var(--gold-dark);
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.teacher-course-card a:hover {
+    color: var(--primary);
+}
+
+/* =========================================
+   9. FOOTER — SAME AS ABOUT PAGE
+========================================= */
+
+.footer {
+    position: relative;
+    background-color: #003d25;
+    color: white;
+    border-top: 3px solid #d4af37;
+    overflow: hidden;
+}
+
+/* FOOTER MAIN CONTAINER */
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 6% 25px;
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr 1fr 1.2fr;
+    gap: 50px;
+}
+
+/* ACADEMY INFORMATION */
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #d4af37;
+    flex-shrink: 0;
+}
+
+.footer-logo h2 {
+    color: white;
+    font-size: 22px;
+    margin: 0;
+}
+
+.footer-logo span {
+    color: #d4af37;
+    font-size: 12px;
+}
+
+.academy-info > p {
+    max-width: 270px;
+    color: #d8e3dc;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* FOOTER HEADINGS */
+
+.footer-column h3 {
+    color: #d4af37;
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+/* FOOTER LINKS */
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+    color: #e6eee9;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #d4af37;
+    padding-left: 4px;
+}
+
+/* CONTACT INFORMATION */
+
+.contact-info p {
+    color: #e6eee9;
+    font-size: 13px;
+    margin-bottom: 9px;
+    line-height: 1.5;
+}
+
+/* SOCIAL LINKS */
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.social-links a {
+    width: 27px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d4af37;
+    border-radius: 50%;
+    color: #d4af37;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #d4af37;
+    color: #003d25;
+}
+
+/* COPYRIGHT */
+
+.footer-bottom {
+    border-top: 1px solid rgba(212, 175, 55, 0.35);
+    text-align: center;
+    padding: 8px 15px;
+}
+
+.footer-bottom p {
+    color: #d8e3dc;
+    font-size: 11px;
+    margin: 0;
+}
+
+/* =========================================
+   10. RESPONSIVE — TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+    .navbar {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .teacher-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .teaching-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .teacher-course-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-container {
+        grid-template-columns: 1.5fr 0.8fr 1fr 1.2fr;
+        gap: 25px;
+    }
+}
+
+/* =========================================
+   11. RESPONSIVE — SMALL LAPTOP
+========================================= */
+
+@media (max-width: 800px) {
+    .navbar {
+        padding: 8px 3%;
+    }
+
+    .brand-name h3 {
+        font-size: 17px;
+    }
+
+    .brand-name span {
+        font-size: 10px;
+    }
+
+    .logo {
+        width: 52px;
+        height: 52px;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .teacher-hero {
+        min-height: 300px;
+    }
+
+    .teacher-hero-content h1 {
+        font-size: 38px;
+    }
+
+    .teacher-hero-content p {
+        font-size: 16px;
+    }
+}
+
+/* =========================================
+   12. RESPONSIVE — MOBILE
+   Header stays fixed like About page
+========================================= */
+
+@media (max-width: 600px) {
+    .navbar {
+        height: auto;
+        min-height: 75px;
+        padding: 7px 3%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    .logo {
+        width: 52px;
+        height: 52px;
+    }
+
+    .brand-name h3 {
+        font-size: 15px;
+    }
+
+    .brand-name span {
+        font-size: 9px;
+    }
+
+    .nav-links {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .dropdown-menu {
+        left: 50%;
+        min-width: 190px;
+        transform: translateX(-50%);
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown:focus-within .dropdown-menu {
+        transform: translateX(-50%);
+    }
+
+    /* Navbar may become taller on mobile */
+    .teacher-hero {
+        margin-top: 120px;
+        min-height: 280px;
+        padding: 45px 5%;
+    }
+
+    .teacher-stats,
+    .teachers-section,
+    .teaching-section,
+    .teacher-courses {
+        padding: 60px 5%;
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .teacher-grid,
+    .teaching-container,
+    .teacher-course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .teacher-grid {
+        max-width: 450px;
+    }
+
+    .teacher-hero-content h1 {
+        font-size: 32px;
+    }
+
+    .teacher-hero-content p {
+        font-size: 15px;
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+        font-size: 29px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .academy-info > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .contact-info p {
+        text-align: left;
+        overflow-wrap: anywhere;
+    }
+}
+
+/* =========================================
+   13. EXTRA SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+    .teacher-hero {
+        margin-top: 130px;
+        min-height: 260px;
+        padding: 40px 5%;
+    }
+
+    .teacher-hero-content span {
+        font-size: 12px;
+    }
+
+    .teacher-hero-content h1 {
+        font-size: 28px;
+    }
+
+    .teacher-hero-content p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        margin: auto;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .section-heading p {
+        font-size: 14px;
+    }
+
+    .teacher-card-image {
+        height: 260px;
+    }
+
+    .teacher-card-content {
+        padding: 22px 18px;
+    }
+
+    .teacher-card-content h3 {
+        font-size: 21px;
+    }
+
+    .teaching-card,
+    .teacher-course-card {
+        padding: 26px 20px;
+    }
+
+    .footer-logo h2 {
+        font-size: 20px;
+    }
+}
+
+/* =========================================
+   14. VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 350px) {
+    .brand {
+        gap: 8px;
+    }
+
+    .brand-name h3 {
+        font-size: 14px;
+    }
+
+    .nav-links {
+        gap: 8px 10px;
+    }
+
+    .teacher-hero-content h1 {
+        font-size: 25px;
+    }
+
+    .teacher-card-image {
+        height: 230px;
+    }
+}
+
+/* =========================================
+   15. REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* =========================================================
+   FLOATING WHATSAPP BUTTON (as provided in image)
+   ========================================================= */
+.floating-whatsapp-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: #ffffff !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 99999;
+    text-decoration: none !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    cursor: pointer;
+}
+
+.floating-whatsapp-btn:hover {
+    background-color: #20ba5a;
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+    color: #ffffff !important;
+}
+
+.floating-whatsapp-btn:active {
+    transform: scale(0.96);
+}
+
+.floating-whatsapp-btn i {
+    color: #ffffff !important;
+    line-height: 1;
+}
+
+@media (max-width: 600px) {
+    .floating-whatsapp-btn {
+        bottom: 18px;
+        right: 18px;
+        width: 52px;
+        height: 52px;
+        font-size: 30px;
+    }
+}
