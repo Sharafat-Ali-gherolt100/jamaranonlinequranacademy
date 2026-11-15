@@ -20,6 +20,8 @@ STOP.bat
 Thumbs.db
 
 # Uploaded images — keep the folder but not files
+images/uploads/*
+!images/uploads/.gitkeep
 Frontend/images/uploads/*
 !Frontend/images/uploads/.gitkeep
 

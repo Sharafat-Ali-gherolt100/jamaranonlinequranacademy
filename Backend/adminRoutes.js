@@ -1765,10 +1765,20 @@ router.delete("/performance/:id", async (req, res) => {
 // =====================================
 // 12. Image Upload
 // POST /upload - raw binary image upload (content-type: image/*)
-// Saves to Frontend/images/uploads/ and returns a relative URL.
+// Saves to images/uploads/ (or Frontend/images/uploads/) and returns a relative URL.
 // =====================================
 
-const UPLOAD_DIR = path.join(__dirname, "../Frontend/images/uploads");
+const UPLOAD_DIR = (function() {
+    const candidates = [
+        path.join(__dirname, "../images/uploads"),
+        path.join(__dirname, "../Frontend/images/uploads"),
+        "/home/jamranqu/public_html/images/uploads"
+    ];
+    for (const c of candidates) {
+        if (fs.existsSync(c)) return c;
+    }
+    return path.join(__dirname, "../images/uploads");
+})();
 const MAX_UPLOAD_BYTES = 5 * 1024 * 1024; // 5 MB
 
 // Detect an image type from the file's magic bytes (never trust the header)
