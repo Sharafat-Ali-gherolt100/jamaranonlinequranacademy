@@ -1,20 +1,29 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/jamranqu/public_html/Backend"
+PassengerBaseURI "/"
+PassengerNodejs "/home/jamranqu/nodevenv/public_html/Backend/18/bin/node"
+PassengerAppType node
+PassengerStartupFile server.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
 
-# 1. Do not rewrite API calls or actual existing files/directories
+# 1. Do NOT rewrite API routes - pass directly to Node.js Passenger
 RewriteCond %{REQUEST_URI} ^/api/ [NC]
-RewriteRule ^ - [L]
+RewriteRule .* - [L]
 
+# 2. Existing static files (css, js, images, html)
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# 2. Check for .html equivalent (e.g. /about -> about.html)
+# 3. Clean URLs (/about -> about.html)
 RewriteCond %{DOCUMENT_ROOT}/$1.html -f
 RewriteRule ^(.*)$ $1.html [L]
 
-# 3. Check for subfolder index.html (e.g. /courses -> courses/index.html)
-RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
-RewriteRule ^(.*)$ $1/index.html [L]
+# 4. Courses Clean URLs (/courses/slug -> courses/slug.html)
+RewriteCond %{DOCUMENT_ROOT}/courses/$1.html -f
+RewriteRule ^courses/(.*)$ courses/$1.html [L]
 </IfModule>
