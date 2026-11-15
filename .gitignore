@@ -22,3 +22,5 @@ Thumbs.db
 # Uploaded images — keep the folder but not files
 Frontend/images/uploads/*
 !Frontend/images/uploads/.gitkeep
+
+*.zip

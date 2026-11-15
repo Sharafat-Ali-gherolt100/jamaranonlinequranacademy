@@ -57,20 +57,21 @@ function resolveFrontendPath() {
         return path.resolve(process.env.FRONTEND_PATH);
     }
     const candidates = [
-        path.resolve(__dirname, "../Frontend"),
+        path.resolve(__dirname, ".."),                       // public_html directly
+        "/home/jamranqu/public_html",                        // absolute public_html
+        path.resolve(__dirname, "../Frontend"),              // legacy Frontend folder
         path.resolve(process.cwd(), "../Frontend"),
         path.resolve(process.cwd(), "Frontend"),
-        path.resolve(__dirname, "Frontend"),
-        "/home/jamranqu/public_html/Frontend"
+        path.resolve(__dirname, "Frontend")
     ];
     for (const candidate of candidates) {
         try {
-            if (fs.existsSync(candidate)) {
+            if (fs.existsSync(path.join(candidate, "about.html")) || fs.existsSync(path.join(candidate, "index.html"))) {
                 return candidate;
             }
         } catch (e) {}
     }
-    return path.resolve(__dirname, "../Frontend");
+    return path.resolve(__dirname, "..");
 }
 
 const frontendPath = resolveFrontendPath();
