@@ -52,7 +52,28 @@ function buildWhatsAppLink(number, fallbackLink) {
 // 1c. CLEAN URLS (no .html in public addresses)
 // ============================================
 
-const frontendPath = path.join(__dirname, "../Frontend");
+function resolveFrontendPath() {
+    if (process.env.FRONTEND_PATH && fs.existsSync(process.env.FRONTEND_PATH)) {
+        return path.resolve(process.env.FRONTEND_PATH);
+    }
+    const candidates = [
+        path.resolve(__dirname, "../Frontend"),
+        path.resolve(process.cwd(), "../Frontend"),
+        path.resolve(process.cwd(), "Frontend"),
+        path.resolve(__dirname, "Frontend"),
+        "/home/jamranqu/public_html/Frontend"
+    ];
+    for (const candidate of candidates) {
+        try {
+            if (fs.existsSync(candidate)) {
+                return candidate;
+            }
+        } catch (e) {}
+    }
+    return path.resolve(__dirname, "../Frontend");
+}
+
+const frontendPath = resolveFrontendPath();
 
 // Redirect legacy ".html" addresses to their clean equivalent.
 // Assets, API routes and non-HTML files are never touched.
@@ -1283,9 +1304,25 @@ app.use("/api", (req, res) => {
     });
 });
 
+// Debug path diagnostic endpoint
+app.get("/api/debug-path", (req, res) => {
+    res.json({
+        __dirname,
+        cwd: process.cwd(),
+        frontendPath,
+        frontendExists: fs.existsSync(frontendPath),
+        indexExists: fs.existsSync(path.join(frontendPath, "index.html")),
+        parentFiles: fs.existsSync(path.join(__dirname, "..")) ? fs.readdirSync(path.join(__dirname, "..")) : []
+    });
+});
+
 // Fallback to frontend index.html for root if needed
-app.get("/", (req, res) => {
-    res.sendFile(path.join(frontendPath, "index.html"));
+app.get("/", (req, res, next) => {
+    const indexPath = path.join(frontendPath, "index.html");
+    if (fs.existsSync(indexPath)) {
+        return res.sendFile(indexPath);
+    }
+    return res.status(404).send(`index.html not found at ${indexPath}`);
 });
 
 // ============================================
