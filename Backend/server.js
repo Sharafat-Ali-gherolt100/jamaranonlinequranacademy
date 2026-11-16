@@ -1032,6 +1032,10 @@ app.get("/api/stats/total-enrolled-students", async (req, res) => {
 function formatCourse(c) {
     if (!c) return null;
     const computedSlug = c.slug || (c.course_name ? slugify(c.course_name) : `course-${c.course_id}`);
+    let img = String(c.image_url || "").trim();
+    if (img && !img.startsWith("/") && !img.startsWith("http")) {
+        img = "/" + img;
+    }
     return {
         id: c.course_id,
         course_id: c.course_id,
@@ -1039,8 +1043,8 @@ function formatCourse(c) {
         course_name: c.course_name,
         title: c.course_name,
         description: c.description || "",
-        image: c.image_url || "",
-        image_url: c.image_url || "",
+        image: img,
+        image_url: img,
         slug: computedSlug,
         level: c.level || "",
         duration: c.duration || "",

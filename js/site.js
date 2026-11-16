@@ -229,10 +229,19 @@
         return "/courses";
     }
 
+    function resolveAssetUrl(url, fallback) {
+        const defaultFallback = "/images/quran.jpeg";
+        const target = (url && String(url).trim()) ? String(url).trim() : (fallback || defaultFallback);
+        if (/^(https?:)?\/\//i.test(target) || target.startsWith("data:")) {
+            return target;
+        }
+        return target.startsWith("/") ? target : "/" + target;
+    }
+
     function buildCourseCard(course) {
-        const defaultImg = "images/quran.jpeg";
-        const imgSrc = (course.image && String(course.image).trim()) ? escapeHTML(course.image) : defaultImg;
-        const img = `<div class="dyn-card-img-wrap"><img src="${imgSrc}" alt="${escapeHTML(course.name)}" loading="lazy" onerror="this.onerror=null;this.src='${defaultImg}'"></div>`;
+        const imgSrc = resolveAssetUrl(course.image, "/images/quran.jpeg");
+        const defaultFallback = "/images/quran.jpeg";
+        const img = `<div class="dyn-card-img-wrap"><img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(course.name)}" loading="lazy" onerror="this.onerror=null;this.src='${defaultFallback}'"></div>`;
 
         const level = course.level
             ? `<span class="dyn-level">${escapeHTML(course.level)}</span>`
@@ -353,8 +362,8 @@
                 if (statusEl) statusEl.remove();
 
                 grid.innerHTML = courses.map(course => {
-                    const defaultImg = "images/quran.jpeg";
-                    const img = (course.image && String(course.image).trim()) ? escapeHTML(course.image) : defaultImg;
+                    const defaultImg = "/images/quran.jpeg";
+                    const img = resolveAssetUrl(course.image, defaultImg);
                     const level = course.level
                         ? `<span class="dir-level">${escapeHTML(course.level)}</span>`
                         : "";
@@ -407,9 +416,10 @@
        --------------------------------------------------------- */
 
     function buildTeacherCard(teacher) {
-        const defaultAvatar = "images/quran.jpeg";
-        const photo = teacher.photo
-            ? `<img class="dyn-teacher-photo" src="${escapeHTML(teacher.photo)}" alt="${escapeHTML(teacher.name)}" loading="lazy" onerror="this.onerror=null;this.src='${defaultAvatar}';">`
+        const defaultAvatar = "/images/quran.jpeg";
+        const photoSrc = teacher.photo ? resolveAssetUrl(teacher.photo, defaultAvatar) : "";
+        const photo = photoSrc
+            ? `<img class="dyn-teacher-photo" src="${escapeHTML(photoSrc)}" alt="${escapeHTML(teacher.name)}" loading="lazy" onerror="this.onerror=null;this.src='${defaultAvatar}';">`
             : `<div class="dyn-teacher-photo-fallback"><i class="fa-solid fa-chalkboard-user"></i></div>`;
 
         const spec = teacher.specialization
