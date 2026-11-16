@@ -155,6 +155,38 @@ app.get("/api/health", (req, res) => {
     });
 });
 
+// ============================================
+// 3b. DIRECT AUTO-DEPLOY WEBHOOK
+// ============================================
+const { exec } = require("child_process");
+
+app.all("/api/deploy-webhook", (req, res) => {
+    const secret = req.query.secret || req.body?.secret || req.headers["x-deploy-secret"];
+    if (secret !== "JamaranDeploy2026") {
+        return res.status(403).json({ success: false, message: "Unauthorized: Invalid secret" });
+    }
+
+    const repoPath = "/home/jamranqu/repositories/jamaranonlinequranacademy";
+    const deployPath = "/home/jamranqu/public_html";
+
+    // 1. Pull latest commits into the cPanel git repository
+    // 2. Copy updated files directly into public_html (preserving .env and node_modules)
+    const cmd = `git -C "${repoPath}" pull origin main 2>&1 && /bin/cp -rf "${repoPath}"/* "${deployPath}/" 2>&1`;
+
+    exec(cmd, { timeout: 30000 }, (err, stdout, stderr) => {
+        if (err) {
+            console.error("Auto-deploy error:", err.message, stderr);
+            return res.status(500).json({ success: false, error: err.message, stdout, stderr });
+        }
+        console.log("Auto-deploy output:", stdout);
+        return res.json({
+            success: true,
+            message: "Production deployment completed successfully!",
+            output: stdout
+        });
+    });
+});
+
 app.get("/api/test", (req, res) => {
     res.json({
         success: true,

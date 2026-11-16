@@ -1,0 +1,25 @@
+name: Auto Deploy to Production (cPanel)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Sync to cPanel Production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Live Server Auto-Deploy
+        run: |
+          echo "🚀 Triggering live production deployment on jamranquran.com..."
+          RESPONSE=$(curl -s -m 35 -X POST "https://jamranquran.com/api/deploy-webhook?secret=JamaranDeploy2026")
+          echo "Server Response: $RESPONSE"
+          if echo "$RESPONSE" | grep -q '"success":true'; then
+            echo "✅ Deployment succeeded via Node.js Webhook!"
+          else
+            echo "⚠️ Primary webhook response not detected, trying fallback deploy endpoint..."
+            FALLBACK=$(curl -s -m 20 "https://jamranquran.com/deploy.php?secret=JamaranDeploy2026")
+            echo "Fallback Response: $FALLBACK"
+          fi
