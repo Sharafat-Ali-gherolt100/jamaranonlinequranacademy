@@ -14,7 +14,7 @@ $repoPath = "/home/jamranqu/repositories/jamaranonlinequranacademy";
 $deployPath = "/home/jamranqu/public_html";
 
 $gitOutput = shell_exec("git -C " . escapeshellarg($repoPath) . " pull origin main 2>&1");
-$cpOutput = shell_exec("/bin/cp -rf " . escapeshellarg($repoPath) . "/* " . escapeshellarg($deployPath) . "/ 2>&1");
+$cpOutput = shell_exec("/bin/cp -rf " . escapeshellarg($repoPath) . "/* " . escapeshellarg($deployPath) . "/ 2>&1 && /bin/cp -f " . escapeshellarg($repoPath . "/.htaccess") . " " . escapeshellarg($deployPath . "/.htaccess") . " 2>&1");
 
 echo json_encode([
     "success" => true,

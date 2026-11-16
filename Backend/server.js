@@ -242,7 +242,7 @@ app.all("/api/deploy-webhook", (req, res) => {
 
     // 1. Pull latest commits into the cPanel git repository
     // 2. Copy updated files directly into public_html (preserving .env and node_modules)
-    const cmd = `git -C "${repoPath}" pull origin main 2>&1 && /bin/cp -rf "${repoPath}"/* "${deployPath}/" 2>&1`;
+    const cmd = `git -C "${repoPath}" pull origin main 2>&1 && /bin/cp -rf "${repoPath}"/* "${deployPath}/" 2>&1 && /bin/cp -f "${repoPath}/.htaccess" "${deployPath}/.htaccess" 2>&1`;
 
     exec(cmd, { timeout: 30000 }, (err, stdout, stderr) => {
         if (err) {

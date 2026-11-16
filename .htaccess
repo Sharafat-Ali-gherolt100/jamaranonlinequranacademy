@@ -14,16 +14,19 @@ RewriteBase /
 RewriteCond %{REQUEST_URI} ^/api/ [NC]
 RewriteRule .* - [L]
 
-# 2. Existing static files (css, js, images, html)
+# 2. Specifically map /courses to courses.html
+RewriteRule ^courses/?$ courses.html [L]
+
+# 3. Existing static files (css, js, images, html)
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# 3. Clean URLs (/about -> about.html)
+# 4. Clean URLs (/about -> about.html)
 RewriteCond %{DOCUMENT_ROOT}/$1.html -f
 RewriteRule ^(.*)$ $1.html [L]
 
-# 4. Courses Clean URLs (/courses/slug -> courses/slug.html)
+# 5. Courses Clean URLs (/courses/slug -> courses/slug.html)
 RewriteCond %{DOCUMENT_ROOT}/courses/$1.html -f
 RewriteRule ^courses/(.*)$ courses/$1.html [L]
 </IfModule>
