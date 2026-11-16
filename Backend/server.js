@@ -2,6 +2,7 @@ const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, ".env") });
 require("dotenv").config();
 const fs = require("fs");
+const { exec } = require("child_process");
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
@@ -156,9 +157,79 @@ app.get("/api/health", (req, res) => {
 });
 
 // ============================================
-// 3b. DIRECT AUTO-DEPLOY WEBHOOK
+// 3c. SEED / ADD FEATURED REVIEW
 // ============================================
-const { exec } = require("child_process");
+app.get("/api/seed-review", async (req, res) => {
+    try {
+        const parentName = req.query.name || "Muhammad Hussain";
+        const [existing] = await db.execute(
+            "SELECT review_id FROM parent_reviews WHERE parent_name = ? LIMIT 1",
+            [parentName]
+        );
+
+        if (existing.length > 0) {
+            await db.execute(
+                `UPDATE parent_reviews 
+                 SET status = 'Approved', consent_to_publish = 1, is_published = 1, published_at = NOW() 
+                 WHERE parent_name = ?`,
+                [parentName]
+            );
+            return res.json({
+                success: true,
+                message: `Review for ${parentName} updated and published!`,
+                review_id: existing[0].review_id
+            });
+        }
+
+        const [result] = await db.execute(
+            `INSERT INTO parent_reviews (
+                student_name,
+                course_name,
+                parent_name,
+                relationship,
+                parent_email,
+                parent_phone,
+                review_date,
+                progress_feedback,
+                strengths,
+                areas_for_improvement,
+                parent_comments,
+                rating,
+                consent_to_publish,
+                is_published,
+                published_at,
+                status
+            ) VALUES (
+                'Ali Reza',
+                'Quran with Tajweed',
+                ?,
+                'Father',
+                'muhammad.hussain@example.com',
+                '+92 300 1234567',
+                CURRENT_DATE,
+                'Alhamdulillah, wonderful learning experience. My son has shown great interest and improvement in Tajweed and daily Quran recitation.',
+                'Good retention and clear Makharij pronunciation.',
+                'Continuing to practice Surah memorization.',
+                'Jamaran Online Quran Academy provides excellent qualified Shia teachers. Highly recommended for all parents!',
+                5,
+                1,
+                1,
+                NOW(),
+                'Approved'
+            )`,
+            [parentName]
+        );
+
+        return res.json({
+            success: true,
+            message: `Review for ${parentName} added and published successfully!`,
+            review_id: result.insertId
+        });
+    } catch (err) {
+        console.error("Seed review error:", err);
+        return res.status(500).json({ success: false, error: err.message });
+    }
+});
 
 app.all("/api/deploy-webhook", (req, res) => {
     const secret = req.query.secret || req.body?.secret || req.headers["x-deploy-secret"];
