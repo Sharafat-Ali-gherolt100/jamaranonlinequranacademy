@@ -1238,45 +1238,36 @@ router.post("/courses", async (req, res) => {
     try {
         const uniqueSlug = await generateUniqueCourseSlug(db, slug || course_name);
 
-        let result;
-        try {
-            [result] = await db.execute(`
-                INSERT INTO courses
-                    (course_name, description, image_url, slug, level, duration,
-                     display_order, syllabus, instructor, requirements, category)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            `, [
-                String(course_name).trim(),
-                description || null,
-                image_url || null,
-                uniqueSlug,
-                level || null,
-                duration || null,
-                Number.isFinite(Number(display_order)) ? Number(display_order) : 0,
-                syllabus || null,
-                instructor || null,
-                requirements || null,
-                category || null
-            ]);
-        } catch (insertErr) {
-            if (insertErr.code === "ER_BAD_FIELD_ERROR") {
-                [result] = await db.execute(`
-                    INSERT INTO courses
-                        (course_name, description, image_url, slug, level, duration, display_order)
-                    VALUES (?, ?, ?, ?, ?, ?, ?)
-                `, [
-                    String(course_name).trim(),
-                    description || null,
-                    image_url || null,
-                    uniqueSlug,
-                    level || null,
-                    duration || null,
-                    Number.isFinite(Number(display_order)) ? Number(display_order) : 0
-                ]);
-            } else {
-                throw insertErr;
+        const [tableCols] = await db.query("SHOW COLUMNS FROM courses");
+        const availableCols = new Set(tableCols.map(c => c.Field));
+
+        const fields = ["course_name"];
+        const values = [String(course_name).trim()];
+        const placeholders = ["?"];
+
+        const candidateFields = {
+            description: description || null,
+            image_url: image_url || null,
+            slug: uniqueSlug,
+            level: level || null,
+            duration: duration || null,
+            display_order: Number.isFinite(Number(display_order)) ? Number(display_order) : 0,
+            syllabus: syllabus || null,
+            instructor: instructor || null,
+            requirements: requirements || null,
+            category: category || null
+        };
+
+        for (const [key, val] of Object.entries(candidateFields)) {
+            if (availableCols.has(key)) {
+                fields.push(key);
+                values.push(val);
+                placeholders.push("?");
             }
         }
+
+        const sql = `INSERT INTO courses (${fields.join(", ")}) VALUES (${placeholders.join(", ")})`;
+        const [result] = await db.execute(sql, values);
 
         return res.status(201).json({
             success: true,
@@ -1291,7 +1282,8 @@ router.post("/courses", async (req, res) => {
             success: false,
             message: error.code === "ER_DUP_ENTRY"
                 ? "A course with this name already exists."
-                : "Could not add course."
+                : (error.message || "Could not add course."),
+            error: error.message
         });
     }
 });
@@ -1315,52 +1307,35 @@ router.put("/courses/:id", async (req, res) => {
     try {
         const uniqueSlug = await generateUniqueCourseSlug(db, slug || course_name, id);
 
-        let result;
-        try {
-            [result] = await db.execute(`
-                UPDATE courses
-                SET course_name = ?, description = ?, image_url = ?, slug = ?,
-                    level = ?, duration = ?, display_order = ?,
-                    syllabus = COALESCE(?, syllabus),
-                    instructor = COALESCE(?, instructor),
-                    requirements = COALESCE(?, requirements),
-                    category = COALESCE(?, category)
-                WHERE course_id = ?
-            `, [
-                String(course_name).trim(),
-                description || null,
-                image_url || null,
-                uniqueSlug,
-                level || null,
-                duration || null,
-                Number.isFinite(Number(display_order)) ? Number(display_order) : 0,
-                syllabus || null,
-                instructor || null,
-                requirements || null,
-                category || null,
-                Number(id)
-            ]);
-        } catch (updateErr) {
-            if (updateErr.code === "ER_BAD_FIELD_ERROR") {
-                [result] = await db.execute(`
-                    UPDATE courses
-                    SET course_name = ?, description = ?, image_url = ?, slug = ?,
-                        level = ?, duration = ?, display_order = ?
-                    WHERE course_id = ?
-                `, [
-                    String(course_name).trim(),
-                    description || null,
-                    image_url || null,
-                    uniqueSlug,
-                    level || null,
-                    duration || null,
-                    Number.isFinite(Number(display_order)) ? Number(display_order) : 0,
-                    Number(id)
-                ]);
-            } else {
-                throw updateErr;
+        const [tableCols] = await db.query("SHOW COLUMNS FROM courses");
+        const availableCols = new Set(tableCols.map(c => c.Field));
+
+        const setClauses = ["course_name = ?"];
+        const values = [String(course_name).trim()];
+
+        const candidateFields = {
+            description: description || null,
+            image_url: image_url || null,
+            slug: uniqueSlug,
+            level: level || null,
+            duration: duration || null,
+            display_order: Number.isFinite(Number(display_order)) ? Number(display_order) : 0,
+            syllabus: syllabus || null,
+            instructor: instructor || null,
+            requirements: requirements || null,
+            category: category || null
+        };
+
+        for (const [key, val] of Object.entries(candidateFields)) {
+            if (availableCols.has(key)) {
+                setClauses.push(`${key} = ?`);
+                values.push(val);
             }
         }
+
+        values.push(Number(id));
+        const sql = `UPDATE courses SET ${setClauses.join(", ")} WHERE course_id = ?`;
+        const [result] = await db.execute(sql, values);
 
         if (!result.affectedRows) {
             return res.status(404).json({ success: false, message: "Course not found." });
@@ -1378,7 +1353,8 @@ router.put("/courses/:id", async (req, res) => {
             success: false,
             message: error.code === "ER_DUP_ENTRY"
                 ? "A course with this name already exists."
-                : "Could not update course."
+                : (error.message || "Could not update course."),
+            error: error.message
         });
     }
 });

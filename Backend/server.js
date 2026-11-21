@@ -242,7 +242,7 @@ app.all("/api/deploy-webhook", (req, res) => {
 
     // 1. Pull latest commits into the cPanel git repository
     // 2. Copy updated files directly into public_html (preserving .env and node_modules)
-    const cmd = `git -C "${repoPath}" pull origin main 2>&1 && /bin/cp -rf "${repoPath}"/* "${deployPath}/" 2>&1 && /bin/cp -f "${repoPath}/.htaccess" "${deployPath}/.htaccess" 2>&1`;
+    const cmd = `git -C "${repoPath}" pull origin main 2>&1 && /bin/cp -rf "${repoPath}"/* "${deployPath}/" 2>&1 && /bin/cp -f "${repoPath}/.htaccess" "${deployPath}/.htaccess" 2>&1 && mkdir -p "${deployPath}/Backend/tmp" && touch "${deployPath}/Backend/tmp/restart.txt"`;
 
     exec(cmd, { timeout: 30000 }, (err, stdout, stderr) => {
         if (err) {
@@ -250,12 +250,26 @@ app.all("/api/deploy-webhook", (req, res) => {
             return res.status(500).json({ success: false, error: err.message, stdout, stderr });
         }
         console.log("Auto-deploy output:", stdout);
-        return res.json({
+        res.json({
             success: true,
             message: "Production deployment completed successfully!",
             output: stdout
         });
+
+        // Gracefully exit so CloudLinux Passenger restarts Node.js with new code immediately
+        setTimeout(() => {
+            process.exit(0);
+        }, 500);
     });
+});
+
+app.get("/api/debug-courses-columns", async (req, res) => {
+    try {
+        const [cols] = await db.query("SHOW COLUMNS FROM courses");
+        res.json({ success: true, columns: cols.map(c => c.Field) });
+    } catch (e) {
+        res.status(500).json({ success: false, error: e.message });
+    }
 });
 
 app.get("/api/test", (req, res) => {
