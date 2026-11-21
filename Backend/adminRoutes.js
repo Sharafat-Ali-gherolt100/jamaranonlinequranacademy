@@ -9,6 +9,31 @@ const { generateUniqueCourseSlug } = require("./slugHelper");
 
 require("dotenv").config();
 
+// Ensure courses table has all expected columns from migration 006
+async function ensureCourseColumns() {
+    try {
+        const columns = [
+            "ALTER TABLE `courses` ADD COLUMN `syllabus` TEXT DEFAULT NULL AFTER `duration`",
+            "ALTER TABLE `courses` ADD COLUMN `instructor` VARCHAR(150) DEFAULT NULL AFTER `syllabus`",
+            "ALTER TABLE `courses` ADD COLUMN `requirements` TEXT DEFAULT NULL AFTER `instructor`",
+            "ALTER TABLE `courses` ADD COLUMN `category` VARCHAR(100) DEFAULT NULL AFTER `requirements`"
+        ];
+        for (const colSql of columns) {
+            try {
+                const ifNotExistsSql = colSql.replace("ADD COLUMN `", "ADD COLUMN IF NOT EXISTS `");
+                await db.query(ifNotExistsSql);
+            } catch (err) {
+                if (err.code !== "ER_DUP_FIELDNAME") {
+                    await db.query(colSql).catch(() => {});
+                }
+            }
+        }
+    } catch (e) {
+        console.error("ensureCourseColumns error:", e.message);
+    }
+}
+ensureCourseColumns();
+
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // =====================================
@@ -1213,24 +1238,45 @@ router.post("/courses", async (req, res) => {
     try {
         const uniqueSlug = await generateUniqueCourseSlug(db, slug || course_name);
 
-        const [result] = await db.execute(`
-            INSERT INTO courses
-                (course_name, description, image_url, slug, level, duration,
-                 display_order, syllabus, instructor, requirements, category)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        `, [
-            String(course_name).trim(),
-            description || null,
-            image_url || null,
-            uniqueSlug,
-            level || null,
-            duration || null,
-            Number.isFinite(Number(display_order)) ? Number(display_order) : 0,
-            syllabus || null,
-            instructor || null,
-            requirements || null,
-            category || null
-        ]);
+        let result;
+        try {
+            [result] = await db.execute(`
+                INSERT INTO courses
+                    (course_name, description, image_url, slug, level, duration,
+                     display_order, syllabus, instructor, requirements, category)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            `, [
+                String(course_name).trim(),
+                description || null,
+                image_url || null,
+                uniqueSlug,
+                level || null,
+                duration || null,
+                Number.isFinite(Number(display_order)) ? Number(display_order) : 0,
+                syllabus || null,
+                instructor || null,
+                requirements || null,
+                category || null
+            ]);
+        } catch (insertErr) {
+            if (insertErr.code === "ER_BAD_FIELD_ERROR") {
+                [result] = await db.execute(`
+                    INSERT INTO courses
+                        (course_name, description, image_url, slug, level, duration, display_order)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                `, [
+                    String(course_name).trim(),
+                    description || null,
+                    image_url || null,
+                    uniqueSlug,
+                    level || null,
+                    duration || null,
+                    Number.isFinite(Number(display_order)) ? Number(display_order) : 0
+                ]);
+            } else {
+                throw insertErr;
+            }
+        }
 
         return res.status(201).json({
             success: true,
@@ -1269,29 +1315,52 @@ router.put("/courses/:id", async (req, res) => {
     try {
         const uniqueSlug = await generateUniqueCourseSlug(db, slug || course_name, id);
 
-        const [result] = await db.execute(`
-            UPDATE courses
-            SET course_name = ?, description = ?, image_url = ?, slug = ?,
-                level = ?, duration = ?, display_order = ?,
-                syllabus = COALESCE(?, syllabus),
-                instructor = COALESCE(?, instructor),
-                requirements = COALESCE(?, requirements),
-                category = COALESCE(?, category)
-            WHERE course_id = ?
-        `, [
-            String(course_name).trim(),
-            description || null,
-            image_url || null,
-            uniqueSlug,
-            level || null,
-            duration || null,
-            Number.isFinite(Number(display_order)) ? Number(display_order) : 0,
-            syllabus || null,
-            instructor || null,
-            requirements || null,
-            category || null,
-            Number(id)
-        ]);
+        let result;
+        try {
+            [result] = await db.execute(`
+                UPDATE courses
+                SET course_name = ?, description = ?, image_url = ?, slug = ?,
+                    level = ?, duration = ?, display_order = ?,
+                    syllabus = COALESCE(?, syllabus),
+                    instructor = COALESCE(?, instructor),
+                    requirements = COALESCE(?, requirements),
+                    category = COALESCE(?, category)
+                WHERE course_id = ?
+            `, [
+                String(course_name).trim(),
+                description || null,
+                image_url || null,
+                uniqueSlug,
+                level || null,
+                duration || null,
+                Number.isFinite(Number(display_order)) ? Number(display_order) : 0,
+                syllabus || null,
+                instructor || null,
+                requirements || null,
+                category || null,
+                Number(id)
+            ]);
+        } catch (updateErr) {
+            if (updateErr.code === "ER_BAD_FIELD_ERROR") {
+                [result] = await db.execute(`
+                    UPDATE courses
+                    SET course_name = ?, description = ?, image_url = ?, slug = ?,
+                        level = ?, duration = ?, display_order = ?
+                    WHERE course_id = ?
+                `, [
+                    String(course_name).trim(),
+                    description || null,
+                    image_url || null,
+                    uniqueSlug,
+                    level || null,
+                    duration || null,
+                    Number.isFinite(Number(display_order)) ? Number(display_order) : 0,
+                    Number(id)
+                ]);
+            } else {
+                throw updateErr;
+            }
+        }
 
         if (!result.affectedRows) {
             return res.status(404).json({ success: false, message: "Course not found." });
