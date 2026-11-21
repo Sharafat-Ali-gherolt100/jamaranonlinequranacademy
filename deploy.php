@@ -15,10 +15,12 @@ $deployPath = "/home/jamranqu/public_html";
 
 $gitOutput = shell_exec("git -C " . escapeshellarg($repoPath) . " pull origin main 2>&1");
 $cpOutput = shell_exec("/bin/cp -rf " . escapeshellarg($repoPath) . "/* " . escapeshellarg($deployPath) . "/ 2>&1 && /bin/cp -f " . escapeshellarg($repoPath . "/.htaccess") . " " . escapeshellarg($deployPath . "/.htaccess") . " 2>&1");
+$restartOutput = shell_exec("mkdir -p " . escapeshellarg($deployPath . "/Backend/tmp") . " && touch " . escapeshellarg($deployPath . "/Backend/tmp/restart.txt") . " && pkill -f server.js 2>&1");
 
 echo json_encode([
     "success" => true,
-    "message" => "Files synchronized via deploy.php",
+    "message" => "Files synchronized and Node.js restarted via deploy.php",
     "git" => $gitOutput,
-    "cp" => $cpOutput
+    "cp" => $cpOutput,
+    "restart" => $restartOutput
 ]);
